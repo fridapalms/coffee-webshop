@@ -18,7 +18,7 @@ export function products() {
 
     const img = document.createElement("img");
     img.src = product.image;
-    img.alt = "Produkt.name";
+    img.alt = "Kaffe Bönor";
     img.className = "productImg";
 
     const icon = document.createElement("img");
