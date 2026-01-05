@@ -1,0 +1,21 @@
+#products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15rem;
+  gap: 40px;
+}
+.productCard {
+  width: 100px;
+  height: 180px;
+  background-color: antiquewhite;
+}
+.productImg {
+  width: 90px;
+  height: 170px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
