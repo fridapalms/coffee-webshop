@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,6 +7,25 @@
     <title>the-webshop-template</title>
   </head>
   <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="/" class="header-logo">
+          <img src="/img/CoffeeLogo.svg" alt="" />
+        </a>
+
+        <form class="search" role="search">
+          <input type="search" placeholder="Sök efter produkt" />
+
+          <button type="submit">
+            <img src="/img/zoom-out.svg" alt="" />
+          </button>
+        </form>
+
+        <a href="/" class="cart">
+          <img src="/img/bag.svg" alt="" />
+        </a>
+      </nav>
+    </header>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
