@@ -9,9 +9,10 @@ export class Product {
   secondimage: string;
   thirdimage: string;
   fourthimage: string;
+  carticon: string;
   productlink: string;
 
-  constructor(title: string, weight: string, info: string, price: string, heroimage: string, secondimage: string, thirdimage: string, fourthimage: string, productlink: string) {
+  constructor(title: string, weight: string, info: string, price: string, heroimage: string, secondimage: string, thirdimage: string, fourthimage: string, carticon: string, productlink: string) {
     this.title = title;
     this.weight = weight;
     this.info = info;
@@ -20,6 +21,7 @@ export class Product {
     this.secondimage = secondimage;
     this.thirdimage = thirdimage;
     this.fourthimage = fourthimage;
+    this.carticon = carticon;
     this.productlink = productlink;
   }
 }
