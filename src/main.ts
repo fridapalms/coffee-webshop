@@ -150,3 +150,30 @@ const allproducts: Product[] = [
   product11,
   product12,
 ];
+
+const cartBtn = document.querySelector(".cart");
+const overlay = document.getElementById("cartOverlay");
+const closeBtn = document.querySelector(".close");
+
+if (cartBtn && overlay && closeBtn) {
+cartBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  overlay.classList.add("open");
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("open");
+});
+
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) {
+    overlay.classList.remove("open");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    overlay.classList.remove("open");
+  }
+});
+}
