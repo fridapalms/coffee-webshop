@@ -3,19 +3,29 @@
   justify-content: center;
   align-items: center;
   margin-top: 15rem;
-  gap: 40px;
+  gap: 16px;
 }
 .productCard {
-  width: 250px;
-  height: 300px;
+  position: relative;
+  width: 300px;
+  height: 250px;
   background-color: antiquewhite;
+  border-radius: 5px;
 }
 .productImg {
-  width: 90px;
-  height: 170px;
+  display: flex;
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
 }
 
 .icon {
+  position: absolute;
+  background-color: rgb(61, 128, 61);
+  border-radius: 4px;
+  bottom: -3rem;
+  right: 10px;
   width: 30px;
   height: 30px;
+  padding: 5px;
 }

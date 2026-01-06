@@ -3,10 +3,10 @@ export function products() {
   if (!container) return;
 
   const heroProducts = [
-    { image: "./img/image4.png", icon: "./img/vector.png" },
-    { image: "./img/image4.png", icon: "./img/vector.png" },
-    { image: "./img/image4.png", icon: "./img/vector.png" },
-    { image: "./img/image4.png", icon: "./img/vector.png" },
+    { image: "/public/img/image 4.png", icon: "/public/img/vector.png" },
+    { image: "/public/img/image 4.png", icon: "/public/img/vector.png" },
+    { image: "/public/img/image 4.png", icon: "/public/img/vector.png" },
+    { image: "/public/img/image 4.png", icon: "/public/img/vector.png" },
   ];
 
   container.innerHTML = "";
