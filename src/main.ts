@@ -3,6 +3,8 @@ import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/productstyle.scss";
 
+//-------  products.html - start -------
+//
 //Skapar alla de 12 produkterna
 const product1: Product = new Product("Kaffepetters", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "299kr", "/hero2.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
 const product2: Product = new Product("Kaffebönan", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "199kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
@@ -22,12 +24,16 @@ const allproducts: Product[] = [product1, product2, product3, product4, product5
 
 //Loopa genom listan allproducts, skapar HTML för varje produkt
 allproducts.forEach((product) => {
-  const productsdiv = document.getElementById("products");
+  const productsdiv = document.getElementById("allproducts");
 
   if (productsdiv) {
     createHtml(product);
   }
 });
+
+//-------  products.html - slut -------
+//
+//
 
 const cartBtn = document.querySelector(".cart");
 const overlay = document.getElementById("cartOverlay");
