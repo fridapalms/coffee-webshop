@@ -1,0 +1,43 @@
+#popular-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0rem;
+  gap: 16px;
+}
+.productCard {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+.productImg {
+  display: flex;
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+}
+
+.icon {
+  position: absolute;
+  background-color: rgb(61, 128, 61);
+  border-radius: 4px;
+  bottom: -3rem;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+.coffeeText {
+  display: flex;
+  margin: 15px;
+}
