@@ -7,6 +7,51 @@ import { cookiePopUp } from "./Utils/cooikeUtils";
 //Cookie
 cookiePopUp();
 
+// Lägg till i varukorgen och ökar antalet x2 x3 osv
+type cartItem = { product: Product; quantity: number};
+const cart: cartItem[] = [];
+
+function renderCart() {
+  const p = document.querySelector(".drawer p") as HTMLParagraphElement | null;
+  if (!p) return;
+
+  if (cart.length === 0) {
+    p.textContent = "Din varukorg är tom";
+    return;
+  }
+
+let text = "Varukorg:\n"
+
+for (let i = 0; i < cart.length; i++) {
+text += `- ${cart[i].product.title} x${cart[i].quantity} (${cart[i].product.price})\n`;
+}
+
+p.textContent = text;
+p.style.whiteSpace = "pre-line";
+}
+
+function openDrawer() {
+  const overlay = document.getElementById("cartOverlay");
+  overlay?.classList.add("open");
+}
+
+function addToCart (product: Product) {
+const existing = cart.find(
+  (item) => 
+    item.product.title === product.title &&
+  item.product.weight === product.weight
+);
+
+if (existing) {
+  existing.quantity += 1;
+} else {
+  cart.push({product: product, quantity: 1});
+}
+renderCart();
+openDrawer();
+}
+
+
 //-------  products.html - start -------
 //
 //Skapar alla de 12 produkterna
@@ -176,7 +221,7 @@ allproducts.forEach((product) => {
   const productsdiv = document.getElementById("allproducts");
 
   if (productsdiv) {
-    createHtml(product);
+    createHtml(product, addToCart);
   }
 });
 
@@ -184,6 +229,7 @@ allproducts.forEach((product) => {
 //
 //
 
+// öppna och stänga varukorgen
 const cartBtn = document.querySelector(".cart");
 const overlay = document.getElementById("cartOverlay");
 const closeBtn = document.querySelector(".close");
@@ -192,6 +238,7 @@ if (cartBtn && overlay && closeBtn) {
   cartBtn.addEventListener("click", (e) => {
     e.preventDefault();
     overlay.classList.add("open");
+    renderCart();
   });
 
   closeBtn.addEventListener("click", () => {
@@ -210,3 +257,5 @@ if (cartBtn && overlay && closeBtn) {
     }
   });
 }
+
+renderCart();

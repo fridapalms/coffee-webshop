@@ -1,8 +1,9 @@
-import type { Product } from "./models/Product";
+import { Product } from "./models/Product";
 
 //Funktion createHtml
-export const createHtml = (product: Product) => {
-  const productsdiv = document.getElementById("allproducts");
+export const createHtml = (product: Product,onAddToCart: (p: Product) => void ) => {
+
+  const productsdiv = document.getElementById("products");
 
   //Skapa element
   const productcard = document.createElement("div");
@@ -28,6 +29,10 @@ export const createHtml = (product: Product) => {
   cartbtn.className = "cartbtn";
   cartimg.className = "cartimg";
   cartimg.src = product.carticon;
+
+  cartbtn.addEventListener("click", () => {
+    onAddToCart(product);
+  });
 
   //Placera element
   imgdiv.appendChild(img);
