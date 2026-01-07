@@ -1,0 +1,57 @@
+@use "variables" as *;
+
+.cookie {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 500px;
+  background-color: $cart_bg_color;
+  padding: $padding-md;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .cookieButtons {
+    display: flex;
+    gap: $padding-sm;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: $padding-md;
+    margin-top: $margin-lg;
+
+    .acceptBtn {
+      width: 180px;
+      height: 25px;
+      background-color: $primary_button_bg;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        background-color: $primary_button_hover;
+        color: white;
+        transition: 0.3s ease-in-out;
+      }
+    }
+
+    .declineBtn {
+      width: 100px;
+      height: 25px;
+      background-color: $secondary_button_bg;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        background-color: $secondary_button_hover;
+        color: white;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}
