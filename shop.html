@@ -37,60 +37,63 @@
     </div>
     <div id="app">
       <section class="shop">
-        <div class="products">
+
             <div class="buy">
                 <h1>Slutför ditt köp</h1>
-                <div class="basket">
-                    <h3>Varukorg:</h3>
+
+                  <div class="basket">
+                    <h2>Varukorg:</h2>
                     <div class="basket-display">Varor här, varukorgslistans HTML loopas fram i JS</div>
-                </div>
-                <h2 class="sum">Total kostnad: Varornas kombinerade pris här</h2>
-                <div class="form">
-                    <form action="#">
-                        <h3>Leveransadress:</h3>
-                        <div class="form-row-1">
-                        <label for="fname">Förnamn:</label>
-                        <input type="text" id="fname" name="fname">
-                        <label for="lname">Efternamn:</label>
-                        <input type="text" id="lname" name="lname">
-                        </div>
-                        <div class="form-row-2">
-                        <label for="addess">Gatuadress:</label>
-                        <input type="text" id="address" name="address">
-                        </div>
-                        <div class="form-row-3">
-                        <label for="postcode">Postnummer:</label>
-                        <input type="text" id="postcode" name="postcode">
-                        <label for="city">Stad:</label>
-                        <input type="text" id="city" name="city">
-                        </div>
-                        <div class="form-row-4">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" name="email">
-                        <label for="phone">Telefonnummer:</label>
-                        <input type="text" id="phone" name="phone">
-                        </div>
-                <h3>Betalmetod:</h3>
-                <div class="payment">
+                    <h2 class="sum">Summa: Varornas kombinerade pris visas här</h2>
+                  </div>
+
+                  <div class="form">
+
+                    <h3>Leveransadress:</h3>
                     
-                    <div class="payment-method">
-                        <input type="radio" id="klarna" name="payment_method" value="klarna" class="clickable">
-                        <label for="klarna"><img src="/klarna.png" class="payment-img clickable" alt="Klarna"></label>
-                    </div>
-                    <div class="payment-method">
-                        <input type="radio" id="swish" name="payment_method" value="swish" class="clickable">
-                        <label for="swish"><img src="/swish.svg" class="payment-img clickable" alt="Swish"></label>
-                    </div>
-                    <div class="payment-method">
-                        <input type="radio" id="kort" name="payment_method" value="kort" class="clickable">
-                        <label for="kort" class="clickable">Kortbetalning</label>
-                    </div>
-                </div>
-                </div>
-                <button class="buybtn">Bekräfta köp</p></button>
-                </form>
-            </div>
-        </div>
+                    
+                        <div class="delivery">
+                          <form action="#" class="contact">
+                          <label for="fname">Förnamn:</label>
+                          <input type="text" id="fname" name="fname">
+                          <label for="lname">Efternamn:</label>
+                          <input type="text" id="lname" name="lname">
+
+                          <label for="addess">Gatuadress:</label>
+                          <input type="text" id="address" name="address">
+
+                          <label for="postcode">Postnummer:</label>
+                          <input type="text" id="postcode" name="postcode">
+                          <label for="city">Stad:</label>
+                          <input type="text" id="city" name="city">
+
+                          <label for="email">Email:</label>
+                          <input type="text" id="email" name="email">
+                          <label for="phone">Telefonnummer:</label>
+                          <input type="text" id="phone" name="phone">
+                        </div>
+
+                          <h3>Betalmetod:</h3>
+                          
+                          <div class="payment">
+                            <div class="payment-method">
+                              <input type="radio" id="klarna" name="payment_method" value="klarna" class="clickable">
+                              <label for="klarna"><img src="/klarna.png" class="payment-img clickable" alt="Klarna"></label>
+                            </div>
+                            <div class="payment-method">
+                              <input type="radio" id="swish" name="payment_method" value="swish" class="clickable">
+                              <label for="swish"><img src="/swish.svg" class="payment-img clickable" alt="Swish"></label>
+                            </div>
+                            <div class="payment-method">
+                              <input type="radio" id="kort" name="payment_method" value="kort" class="clickable">
+                              <label for="kort" class="clickable">Kortbetalning</label>
+                            </div>
+                          </div>
+                    </div>  
+
+                <button type="submit" class="buybtn">Bekräfta köp</button>
+                    </form>
+              </div>
       </section>
 
       <footer>
