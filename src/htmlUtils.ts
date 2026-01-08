@@ -1,8 +1,8 @@
 import { Product } from "./models/Product";
+import { productInfo } from "./productInfo/productDetails";
 
 //Funktion createHtml
-export const createHtml = (product: Product,onAddToCart: (p: Product) => void ) => {
-
+export const createHtml = (product: Product, onAddToCart: (p: Product) => void) => {
   const productsdiv = document.getElementById("allproducts");
 
   //Skapa element
@@ -45,3 +45,6 @@ export const createHtml = (product: Product,onAddToCart: (p: Product) => void ) 
   productcard.appendChild(infodiv);
   productsdiv?.appendChild(productcard);
 };
+
+//anropa productInfo
+productInfo();
