@@ -3,7 +3,7 @@ import { Product } from "./models/Product";
 //Funktion createHtml
 export const createHtml = (product: Product,onAddToCart: (p: Product) => void ) => {
 
-  const productsdiv = document.getElementById("products");
+  const productsdiv = document.getElementById("allproducts");
 
   //Skapa element
   const productcard = document.createElement("div");
