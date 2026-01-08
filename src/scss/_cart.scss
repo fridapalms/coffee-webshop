@@ -55,3 +55,26 @@ $cart-bg: #b68a63;
   margin: 0;
   color: #2d221e;
 }
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cart-item-text {
+  color: 2d221e;
+}

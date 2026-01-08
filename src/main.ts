@@ -7,34 +7,68 @@ import { cookiePopUp } from "./Utils/cooikeUtils";
 //Cookie
 cookiePopUp();
 
-// Lägg till i varukorgen och ökar antalet x2 x3 osv
+// Sparar produkt och antal i varukorgen
 type cartItem = { product: Product; quantity: number};
 const cart: cartItem[] = [];
 
-function renderCart() {
-  const p = document.querySelector(".drawer p") as HTMLParagraphElement | null;
+function stackPrice(price: string): number {
+  return Number(price.replace("kr", ""));
+}
+
+// uppdaterar innehållet i varukorgen 
+function renderCart () {
+  const drawer = document.querySelector(".drawer") as HTMLElement | null;
+  if (!drawer) return;
+  const p = drawer.querySelector("p") as HTMLParagraphElement | null;
   if (!p) return;
 
-  if (cart.length === 0) {
-    p.textContent = "Din varukorg är tom";
-    return;
+  let list = drawer.querySelector(".cart-list") as HTMLDivElement | null;
+  if (!list) {
+    list = document.createElement("div");
+    list.className = "cart-list";
+    drawer.appendChild(list);
   }
 
-let text = "Varukorg:\n"
+if (cart.length === 0) {
+  p.textContent = "Din varukorg är tom";
+  list.innerHTML = "";
+  return;
+}
 
+p.textContent = "";
+list.innerHTML = "";
+
+// loopar igenom varukorgen och bygger HTML 
 for (let i = 0; i < cart.length; i++) {
-text += `- ${cart[i].product.title} x${cart[i].quantity} (${cart[i].product.price})\n`;
+  const item = cart[i];
+
+  const row = document.createElement("div");
+  row.className = "cart-item";
+
+  const img = document.createElement("img");
+  img.className = ("cart-item-image");
+  img.src = item.product.heroimage;
+  img.alt = item.product.title;
+
+  const text = document.createElement("div");
+  text.className = "cart-item-text";
+  const unitPrice = stackPrice(item.product.price);
+  const totalPrice = unitPrice * item.quantity;
+  text.textContent = `${item.product.title} x${item.quantity} (${totalPrice} kr)`;
+
+  row.appendChild(img);
+  row.appendChild(text);
+  list.appendChild(row);
+  }
 }
 
-p.textContent = text;
-p.style.whiteSpace = "pre-line";
-}
-
+// öppnar varukorgen
 function openDrawer() {
   const overlay = document.getElementById("cartOverlay");
   overlay?.classList.add("open");
 }
 
+//lägger till i varukorgen +ökar om det är fler av samma
 function addToCart (product: Product) {
 const existing = cart.find(
   (item) => 
