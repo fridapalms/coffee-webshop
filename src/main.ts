@@ -2,6 +2,10 @@ import { createHtml } from "./htmlUtils";
 import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/productstyle.scss";
+import { cookiePopUp } from "./Utils/cooikeUtils";
+
+//Cookie
+cookiePopUp();
 
 //-------  products.html - start -------
 //
