@@ -1,5 +1,5 @@
 export const cookiePopUp = () => {
-  const cookieBox = document.getElementById("cookiePopUp");
+  const cookieBox = document.getElementById("cookieOverlay");
   const buttons = document.querySelectorAll(".acceptBtn, .declineBtn");
 
   if (!cookieBox) return;

@@ -59,6 +59,7 @@ body {
   outline: none;
   background: #f4ede2;
   color: $header-bg;
+  opacity: 50%;
 
   &::placeholder {
     color: $header-bg;

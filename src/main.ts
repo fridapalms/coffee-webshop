@@ -3,20 +3,24 @@ import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/productstyle.scss";
 import { cookiePopUp } from "./Utils/cooikeUtils";
+import { products } from "./heroSection/hero";
 
 //Cookie
 cookiePopUp();
 
+//homePage
+products();
+
 // Sparar produkt och antal i varukorgen
-type cartItem = { product: Product; quantity: number};
+type cartItem = { product: Product; quantity: number };
 const cart: cartItem[] = [];
 
 function stackPrice(price: string): number {
   return Number(price.replace("kr", ""));
 }
 
-// uppdaterar innehållet i varukorgen 
-function renderCart () {
+// uppdaterar innehållet i varukorgen
+function renderCart() {
   const drawer = document.querySelector(".drawer") as HTMLElement | null;
   if (!drawer) return;
   const p = drawer.querySelector("p") as HTMLParagraphElement | null;
@@ -29,36 +33,36 @@ function renderCart () {
     drawer.appendChild(list);
   }
 
-if (cart.length === 0) {
-  p.textContent = "Din varukorg är tom";
+  if (cart.length === 0) {
+    p.textContent = "Din varukorg är tom";
+    list.innerHTML = "";
+    return;
+  }
+
+  p.textContent = "";
   list.innerHTML = "";
-  return;
-}
 
-p.textContent = "";
-list.innerHTML = "";
+  // loopar igenom varukorgen och bygger HTML
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
 
-// loopar igenom varukorgen och bygger HTML 
-for (let i = 0; i < cart.length; i++) {
-  const item = cart[i];
+    const row = document.createElement("div");
+    row.className = "cart-item";
 
-  const row = document.createElement("div");
-  row.className = "cart-item";
+    const img = document.createElement("img");
+    img.className = "cart-item-image";
+    img.src = item.product.heroimage;
+    img.alt = item.product.title;
 
-  const img = document.createElement("img");
-  img.className = ("cart-item-image");
-  img.src = item.product.heroimage;
-  img.alt = item.product.title;
+    const text = document.createElement("div");
+    text.className = "cart-item-text";
+    const unitPrice = stackPrice(item.product.price);
+    const totalPrice = unitPrice * item.quantity;
+    text.textContent = `${item.product.title} x${item.quantity} (${totalPrice} kr)`;
 
-  const text = document.createElement("div");
-  text.className = "cart-item-text";
-  const unitPrice = stackPrice(item.product.price);
-  const totalPrice = unitPrice * item.quantity;
-  text.textContent = `${item.product.title} x${item.quantity} (${totalPrice} kr)`;
-
-  row.appendChild(img);
-  row.appendChild(text);
-  list.appendChild(row);
+    row.appendChild(img);
+    row.appendChild(text);
+    list.appendChild(row);
   }
 }
 
@@ -69,22 +73,21 @@ function openDrawer() {
 }
 
 //lägger till i varukorgen +ökar om det är fler av samma
-function addToCart (product: Product) {
-const existing = cart.find(
-  (item) => 
-    item.product.title === product.title &&
-  item.product.weight === product.weight
-);
+function addToCart(product: Product) {
+  const existing = cart.find(
+    (item) =>
+      item.product.title === product.title &&
+      item.product.weight === product.weight
+  );
 
-if (existing) {
-  existing.quantity += 1;
-} else {
-  cart.push({product: product, quantity: 1});
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ product: product, quantity: 1 });
+  }
+  renderCart();
+  openDrawer();
 }
-renderCart();
-openDrawer();
-}
-
 
 //-------  products.html - start -------
 //
