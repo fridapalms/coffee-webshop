@@ -48,7 +48,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 50%;
+  width: 100%;
+  max-width: 550px;
 
   input {
     background-color: $secondary;
@@ -62,7 +63,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 50%;
+  width: 100%;
+  max-width: 550px;
 
   .payment-method {
     border: 1px solid $cart_bg_color;
