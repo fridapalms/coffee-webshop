@@ -25,6 +25,9 @@ $cart-bg: #b68a63;
   transform: translateX(100%);
   transition: transform 220ms ease;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .overlay.open .drawer {
@@ -60,6 +63,10 @@ $cart-bg: #b68a63;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  min-height: 0;
 }
 
 .cart-item {
@@ -76,5 +83,5 @@ $cart-bg: #b68a63;
 }
 
 .cart-item-text {
-  color: 2d221e;
+  color: #2d221e;
 }

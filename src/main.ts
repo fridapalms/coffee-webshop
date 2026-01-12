@@ -11,8 +11,67 @@ cookiePopUp();
 type cartItem = { product: Product; quantity: number };
 const cart: cartItem[] = [];
 
+// localstorage
+const CART_KEY = "cart";
+
+function cartLocalStorage() {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function loadCartLocalStorage () {
+  const storedCart = localStorage.getItem(CART_KEY);
+  if (!storedCart) return;
+
+  try {
+    const storedCartItems = JSON.parse(storedCart) as Array<{
+      product: {
+          title: string;
+          weight: string;
+          info: string;
+          price: string;
+          heroimage: string;
+          secondimage: string;
+          thirdimage: string;
+          fourthimage: string;
+          carticon: string;
+          productlink: string;
+      };
+      quantity: number;
+    }>;
+
+    cart.length = 0;
+
+    storedCartItems.forEach ((item) => {
+      const product = new Product (
+        item.product.title,
+        item.product.weight,
+        item.product.info,
+        item.product.price,
+        item.product.heroimage,
+        item.product.secondimage,
+        item.product.thirdimage,
+        item.product.fourthimage,
+        item.product.carticon,
+        item.product.productlink
+      );
+
+      cart.push({ product, quantity: item.quantity });
+    });
+  } catch {
+    localStorage.removeItem(CART_KEY);
+  }
+}
+
+loadCartLocalStorage();
+
 function stackPrice(price: string): number {
   return Number(price.replace("kr", ""));
+}
+
+function clearCart () {
+  cart.length = 0;
+  cartLocalStorage();
+  renderCart();
 }
 
 // uppdaterar innehållet i varukorgen
@@ -35,6 +94,9 @@ if (cart.length === 0) {
     list.innerHTML = "";
     const checkoutBtn = drawer.querySelector(".checkout-btn");
   checkoutBtn?.remove();
+  const clearBtn = drawer.querySelector(".clear-btn");
+  clearBtn?.remove();
+  cartLocalStorage();
   return;
   }
 
@@ -73,9 +135,19 @@ if (!checkoutBtn) {
   checkoutBtn.textContent = "Gå till kassan"
 
   checkoutBtn.addEventListener("click", () => {
+    cartLocalStorage();
     window.location.href = "shop.html";
   });
   drawer.appendChild(checkoutBtn);
+}
+
+let clearBtn = drawer.querySelector(".clear-btn") as HTMLButtonElement | null;
+if (!clearBtn) {
+  clearBtn = document.createElement("button");
+  clearBtn.className = "clear-btn";
+  clearBtn.textContent = "Töm varukorgen";
+  clearBtn.addEventListener("click", clearCart);
+  drawer.appendChild(clearBtn);
 }
 
 }
@@ -97,6 +169,7 @@ function addToCart(product: Product) {
   }
   renderCart();
   openDrawer();
+  cartLocalStorage();
 }
 
 //-------  products.html - start -------
