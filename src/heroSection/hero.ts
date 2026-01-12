@@ -3,10 +3,26 @@ export function products() {
   if (!container) return;
 
   const heroProducts = [
-    { image: "/public/img/image 4.png", icon: "/public/img/vector.png", name: "KAFFEBÖNOR\n299.00 kr" },
-    { image: "/public/img/image 4.png", icon: "/public/img/vector.png", name: "KAFFEPETTERS\n299.00 kr" },
-    { image: "/public/img/image 4.png", icon: "/public/img/vector.png", name: "KARLSSONS\n299.00 kr" },
-    { image: "/public/img/image 4.png", icon: "/public/img/vector.png", name: "KOFFEBRODERNS\n299.00 kr" },
+    {
+      image: "/img/image 4.png",
+      icon: "/public/img/vector.png",
+      name: "KAFFEBÖNOR\n299.00 kr",
+    },
+    {
+      image: "/img/image 4.png",
+      icon: "/public/img/vector.png",
+      name: "KAFFEPETTERS\n299.00 kr",
+    },
+    {
+      image: "/img/image 4.png",
+      icon: "/public/img/vector.png",
+      name: "KARLSSONS\n299.00 kr",
+    },
+    {
+      image: "/img/image 4.png",
+      icon: "/public/img/vector.png",
+      name: "KOFFEBRODERNS\n299.00 kr",
+    },
   ];
 
   container.innerHTML = "";
@@ -21,9 +37,15 @@ export function products() {
     img.alt = "coffeImg";
     img.className = "productImg";
 
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "infoContainer";
+
+    const iconContainer = document.createElement("button");
+    iconContainer.className = "cartBtn";
+
     const icon = document.createElement("img");
     icon.src = product.icon;
-    icon.alt = "varukorg";
+    icon.alt = "cartImg";
     icon.className = "icon";
 
     const text = document.createElement("p");
@@ -31,9 +53,13 @@ export function products() {
     text.textContent = product.name;
     text.style.whiteSpace = "pre-line";
 
+    iconContainer.appendChild(icon);
+
+    infoContainer.appendChild(text);
+    infoContainer.appendChild(iconContainer);
+
     card.appendChild(img);
-    card.appendChild(icon);
-    card.appendChild(text);
+    card.appendChild(infoContainer);
 
     container.appendChild(card);
   }
