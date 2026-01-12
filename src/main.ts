@@ -29,10 +29,13 @@ function renderCart() {
     drawer.appendChild(list);
   }
 
-  if (cart.length === 0) {
+  // Döljer kassa knappen när varukorgen är tom
+if (cart.length === 0) {
     p.textContent = "Din varukorg är tom";
     list.innerHTML = "";
-    return;
+    const checkoutBtn = drawer.querySelector(".checkout-btn");
+  checkoutBtn?.remove();
+  return;
   }
 
   p.textContent = "";
@@ -60,6 +63,21 @@ function renderCart() {
     row.appendChild(text);
     list.appendChild(row);
   }
+
+// gå till kassan knappen i varukorgen
+let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
+
+if (!checkoutBtn) {
+  checkoutBtn = document.createElement("button");
+  checkoutBtn.className = "checkout-btn";
+  checkoutBtn.textContent = "Gå till kassan"
+
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "shop.html";
+  });
+  drawer.appendChild(checkoutBtn);
+}
+
 }
 
 // öppnar varukorgen
