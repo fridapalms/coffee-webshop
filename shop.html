@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/src/style.scss" />
   </head>
   <body>
-    <header class="header">
+    <header class="header" id="header">
       <nav class="nav">
         <a href="/" class="header-logo">
           <img src="/img/CoffeeLogo.svg" alt="" />
@@ -53,7 +53,7 @@
                     
                     
                         <div class="delivery">
-                          <form action="#" class="contact">
+                          <form action="#" class="contact" id="buyform">
                           <label for="fname">Förnamn:</label>
                           <input type="text" id="fname" name="fname">
                           <label for="lname">Efternamn:</label>
@@ -91,10 +91,11 @@
                           </div>
                     </div>  
 
-                <button type="submit" class="buybtn">Bekräfta köp</button>
+                <button type="button" class="buybtn" id="buybtn"><a href="#header">Bekräfta köp</a></button>
                     </form>
                     <a href="/products.html" class="linkreset"><button class="keepshoppingbtn">Fortsätt shoppa</button></a>
               </div>
+              <dialog class="modal" id="modal"></dialog>
       </section>
 
       <footer>

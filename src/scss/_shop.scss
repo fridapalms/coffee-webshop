@@ -112,6 +112,11 @@ h3 {
     color: white;
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
   }
+
+  a {
+    text-decoration: none;
+    color: $primary;
+  }
 }
 
 .keepshoppingbtn {
@@ -131,5 +136,44 @@ h3 {
     background-color: $secondary_button_hover;
     color: white;
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.modal {
+  background-color: $bg_color;
+  border: 2px solid $secondary;
+  padding: $padding-lg;
+
+  .modaldiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: $padding-lg;
+  }
+
+  .confirmation {
+    text-align: center;
+  }
+
+  .closepopup {
+    width: 180px;
+    height: 40px;
+    background-color: $secondary_button_bg;
+    font-size: $fontSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    &:hover {
+      background-color: $secondary_button_hover;
+      color: white;
+      box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
   }
 }

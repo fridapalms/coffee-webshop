@@ -127,7 +127,7 @@ allproducts.forEach((product) => {
   }
 });
 
-//-------  products.html - slut -------
+//-------  products.html - end -------
 //
 //
 
@@ -161,3 +161,42 @@ if (cartBtn && overlay && closeBtn) {
 }
 
 renderCart();
+
+//------ shop.html - start -----
+//
+//Lyssna efter klick på Bekräfta köp -> Öppna/stång orderbekräftelse popup
+const buybtn = document.getElementById("buybtn");
+
+buybtn?.addEventListener("click", async () => {
+  const modal = document.getElementById("modal") as HTMLDialogElement;
+  modal.innerHTML = "";
+
+  if (modal) {
+    const modaldiv = document.createElement("div");
+    modaldiv.className = "modaldiv";
+    const confirmation = document.createElement("p");
+    confirmation.className = "confirmation";
+    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.";
+    const closepopup = document.createElement("button");
+    closepopup.className = "closepopup";
+    closepopup.innerHTML = "Stäng fönster";
+    modaldiv.appendChild(confirmation);
+    modaldiv.appendChild(closepopup);
+    modal.appendChild(modaldiv);
+
+    closepopup.addEventListener("click", async () => {
+      modal.close();
+    });
+
+    modal.showModal();
+  }
+});
+
+//Tömmer formuläret efter klick
+const form = document.getElementById("buyform") as HTMLFormElement;
+
+buybtn?.addEventListener("click", () => {
+  form.reset();
+  //Kanske lägga till här att varukorgslistan töms då varorna är köpta?
+});
+//------ shop.html - end -----
