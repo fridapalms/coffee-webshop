@@ -3,7 +3,7 @@ import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooikeUtils";
-import "./scss/productstyle.scss";
+
 import { productInfo } from "./productInfo/productDetails";
 
 //Cookie
