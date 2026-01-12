@@ -13,21 +13,21 @@ export function productInfo() {
   ];
 
   for (let i = 0; i < imgDivs.length; i++) {
-    const img = imgDivs[i] as HTMLDivElement;
+    const img = imgDivs[i] as HTMLDivElement; // klickbar bild
     // const textInfo = textDivs[i] as HTMLDivElement; koppla!!!!
 
     img.addEventListener("click", () => {
       // create
       const productPage = document.createElement("div");
-      const about = document.createElement("img");
-      const about2 = document.createElement("img");
-      const about3 = document.createElement("img");
-      const about4 = document.createElement("img");
+      const bigImg = document.createElement("img");
+      const imgSmallLeft = document.createElement("img");
+      const imgSmallCenter = document.createElement("img");
+      const imgSmallRight = document.createElement("img");
 
-      const div1 = document.createElement("div");
-      const div2 = document.createElement("div");
-      const div3 = document.createElement("div");
-      const div4 = document.createElement("div");
+      const bigImgContainer = document.createElement("div");
+      const smallImgLeft = document.createElement("div");
+      const smallImgCenter = document.createElement("div");
+      const smallImgRight = document.createElement("div");
 
       const productContainer = document.createElement("div");
       const productTitle = document.createElement("h2");
@@ -43,8 +43,18 @@ export function productInfo() {
       cartButton.type = "submit";
       cartButton.className = "cartbtn";
 
+      bigImg.src = productimg[0].numhero;
+      imgSmallRight.src = productimg[0].num1;
+      imgSmallCenter.src = productimg[0].num2;
+      imgSmallLeft.src = productimg[0].num3;
       logo.src = productimg[0].cart;
+
+      bigImg.alt = "coffeeImg";
+      imgSmallLeft.alt = "coffeeImg2";
+      imgSmallCenter.alt = "coffeeImg3";
+      imgSmallRight.alt = "coffeeImg4";
       logo.alt = "addtocart";
+
       logo.className = "cartimg";
       logo.id = "cartid";
 
@@ -57,29 +67,20 @@ export function productInfo() {
       const smallContainer = document.createElement("div");
       const allWrapper = document.createElement("div");
 
-      about.src = productimg[0].numhero;
-      about4.src = productimg[0].num1;
-      about3.src = productimg[0].num2;
-      about2.src = productimg[0].num3;
-
-      about.alt = "coffeeImg";
-      about2.alt = "coffeeImg2";
-      about3.alt = "coffeeImg3";
-      about4.alt = "coffeeImg3";
-
       productContainer.className = "productContainer";
       quantityContainer.className = "quantityContainer";
       smallContainer.className = "small-container";
       allWrapper.className = "all-wrapper";
-      div1.className = "div1";
-      div2.className = "div2";
-      div3.className = "div3";
-      div4.className = "div4";
+      bigImgContainer.className = "bigImgContainer";
 
-      about.className = "productImg";
-      about2.className = "productImg2";
-      about3.className = "productImg3";
-      about4.className = "productImg4";
+      smallImgLeft.className = "smallImgLeft";
+      smallImgCenter.className = "smallImgCenter";
+      smallImgRight.className = "smallImgRight";
+
+      bigImg.className = "bigImg";
+      imgSmallLeft.className = "imgSmallLeft";
+      imgSmallCenter.className = "imgSmallCenter";
+      imgSmallLeft.className = "imgSmallLeft";
       productPage.className = "productPage";
 
       productTitle.textContent = "Karlssons Bönor";
@@ -87,7 +88,6 @@ export function productInfo() {
         "En len och fyllig smak som breder ut sig lugnt, med  tydliga toner av choklad och en behaglig rundhet i avslutet.";
 
       // append
-
       productContainer.appendChild(productTitle);
       productContainer.appendChild(productText);
       productPage.appendChild(productContainer);
@@ -95,18 +95,18 @@ export function productInfo() {
       cartButton.appendChild(logo);
       quantityContainer.appendChild(quantityInput);
       quantityContainer.appendChild(cartButton);
-      productPage.appendChild(quantityContainer);
+      bigImgContainer.appendChild(quantityContainer);
 
-      smallContainer.appendChild(div2);
-      smallContainer.appendChild(div3);
-      smallContainer.appendChild(div4);
+      smallContainer.appendChild(smallImgLeft);
+      smallContainer.appendChild(smallImgCenter);
+      smallContainer.appendChild(smallImgRight);
 
-      div1.appendChild(about);
-      div2.appendChild(about2);
-      div3.appendChild(about3);
-      div4.appendChild(about4);
+      bigImgContainer.appendChild(bigImg);
+      smallImgLeft.appendChild(imgSmallLeft);
+      smallImgCenter.appendChild(imgSmallCenter);
+      smallImgRight.appendChild(imgSmallRight);
 
-      productPage.appendChild(div1);
+      productPage.appendChild(bigImgContainer);
       productPage.appendChild(smallContainer);
 
       document.body.appendChild(productPage);
