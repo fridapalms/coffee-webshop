@@ -260,6 +260,7 @@ const form = document.getElementById("buyform") as HTMLFormElement;
 
 buybtn?.addEventListener("click", () => {
   form.reset();
+  clearCart();
   //Kanske lägga till här att varukorgslistan töms då varorna är köpta?
 });
 //------ shop.html - end -----
