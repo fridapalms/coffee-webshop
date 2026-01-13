@@ -68,6 +68,7 @@ function stackPrice(price: string): number {
   return Number(price.replace("kr", ""));
 }
 
+// Tömmer varukorgen 
 function clearCart () {
   cart.length = 0;
   cartLocalStorage();
@@ -141,6 +142,7 @@ if (!checkoutBtn) {
   drawer.appendChild(checkoutBtn);
 }
 
+// tömmer varukorgen knappen
 let clearBtn = drawer.querySelector(".clear-btn") as HTMLButtonElement | null;
 if (!clearBtn) {
   clearBtn = document.createElement("button");
