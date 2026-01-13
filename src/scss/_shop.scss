@@ -94,6 +94,11 @@ h3 {
   }
 }
 
+.buylink {
+  text-decoration: none;
+  color: $primary;
+}
+
 .buybtn {
   width: 180px;
   height: 40px;
@@ -111,11 +116,6 @@ h3 {
     background-color: $primary_button_hover;
     color: white;
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  a {
-    text-decoration: none;
-    color: $primary;
   }
 }
 

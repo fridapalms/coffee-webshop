@@ -18,42 +18,31 @@ function cartLocalStorage() {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-function loadCartLocalStorage () {
+function loadCartLocalStorage() {
   const storedCart = localStorage.getItem(CART_KEY);
   if (!storedCart) return;
 
   try {
     const storedCartItems = JSON.parse(storedCart) as Array<{
       product: {
-          title: string;
-          weight: string;
-          info: string;
-          price: string;
-          heroimage: string;
-          secondimage: string;
-          thirdimage: string;
-          fourthimage: string;
-          carticon: string;
-          productlink: string;
+        title: string;
+        weight: string;
+        info: string;
+        price: string;
+        heroimage: string;
+        secondimage: string;
+        thirdimage: string;
+        fourthimage: string;
+        carticon: string;
+        productlink: string;
       };
       quantity: number;
     }>;
 
     cart.length = 0;
 
-    storedCartItems.forEach ((item) => {
-      const product = new Product (
-        item.product.title,
-        item.product.weight,
-        item.product.info,
-        item.product.price,
-        item.product.heroimage,
-        item.product.secondimage,
-        item.product.thirdimage,
-        item.product.fourthimage,
-        item.product.carticon,
-        item.product.productlink
-      );
+    storedCartItems.forEach((item) => {
+      const product = new Product(item.product.title, item.product.weight, item.product.info, item.product.price, item.product.heroimage, item.product.secondimage, item.product.thirdimage, item.product.fourthimage, item.product.carticon, item.product.productlink);
 
       cart.push({ product, quantity: item.quantity });
     });
@@ -68,8 +57,8 @@ function stackPrice(price: string): number {
   return Number(price.replace("kr", ""));
 }
 
-// Tömmer varukorgen 
-function clearCart () {
+// Tömmer varukorgen
+function clearCart() {
   cart.length = 0;
   cartLocalStorage();
   renderCart();
@@ -90,15 +79,15 @@ function renderCart() {
   }
 
   // Döljer kassa knappen när varukorgen är tom
-if (cart.length === 0) {
+  if (cart.length === 0) {
     p.textContent = "Din varukorg är tom";
     list.innerHTML = "";
     const checkoutBtn = drawer.querySelector(".checkout-btn");
-  checkoutBtn?.remove();
-  const clearBtn = drawer.querySelector(".clear-btn");
-  clearBtn?.remove();
-  cartLocalStorage();
-  return;
+    checkoutBtn?.remove();
+    const clearBtn = drawer.querySelector(".clear-btn");
+    clearBtn?.remove();
+    cartLocalStorage();
+    return;
   }
 
   p.textContent = "";
@@ -127,31 +116,30 @@ if (cart.length === 0) {
     list.appendChild(row);
   }
 
-// gå till kassan knappen i varukorgen
-let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
+  // gå till kassan knappen i varukorgen
+  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
 
-if (!checkoutBtn) {
-  checkoutBtn = document.createElement("button");
-  checkoutBtn.className = "checkout-btn";
-  checkoutBtn.textContent = "Gå till kassan"
+  if (!checkoutBtn) {
+    checkoutBtn = document.createElement("button");
+    checkoutBtn.className = "checkout-btn";
+    checkoutBtn.textContent = "Gå till kassan";
 
-  checkoutBtn.addEventListener("click", () => {
-    cartLocalStorage();
-    window.location.href = "shop.html";
-  });
-  drawer.appendChild(checkoutBtn);
-}
+    checkoutBtn.addEventListener("click", () => {
+      cartLocalStorage();
+      window.location.href = "shop.html";
+    });
+    drawer.appendChild(checkoutBtn);
+  }
 
-// tömmer varukorgen knappen
-let clearBtn = drawer.querySelector(".clear-btn") as HTMLButtonElement | null;
-if (!clearBtn) {
-  clearBtn = document.createElement("button");
-  clearBtn.className = "clear-btn";
-  clearBtn.textContent = "Töm varukorgen";
-  clearBtn.addEventListener("click", clearCart);
-  drawer.appendChild(clearBtn);
-}
-
+  // tömmer varukorgen knappen
+  let clearBtn = drawer.querySelector(".clear-btn") as HTMLButtonElement | null;
+  if (!clearBtn) {
+    clearBtn = document.createElement("button");
+    clearBtn.className = "clear-btn";
+    clearBtn.textContent = "Töm varukorgen";
+    clearBtn.addEventListener("click", clearCart);
+    drawer.appendChild(clearBtn);
+  }
 }
 
 // öppnar varukorgen
@@ -251,7 +239,7 @@ buybtn?.addEventListener("click", async () => {
     modaldiv.className = "modaldiv";
     const confirmation = document.createElement("p");
     confirmation.className = "confirmation";
-    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.";
+    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
     const closepopup = document.createElement("button");
     closepopup.className = "closepopup";
     closepopup.innerHTML = "Stäng fönster";
