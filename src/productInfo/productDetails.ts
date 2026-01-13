@@ -13,11 +13,11 @@ export function productInfo() {
   ];
 
   for (let i = 0; i < imgDivs.length; i++) {
-    const img = imgDivs[i] as HTMLDivElement; // klickbar bild
+    const img = imgDivs[i] as HTMLDivElement;
     // const textInfo = textDivs[i] as HTMLDivElement; koppla!!!!
 
     img.addEventListener("click", () => {
-      // create
+      // create element
       const productPage = document.createElement("div");
       const bigImg = document.createElement("img");
       const imgSmallLeft = document.createElement("img");
@@ -35,11 +35,14 @@ export function productInfo() {
 
       const quantityContainer = document.createElement("div");
       const cartButton = document.createElement("button");
-      const logo = document.createElement("img"); //img icon quantity
-      const quantityInput = document.createElement("input"); //quantity input
-      // content wrapp
+      const logo = document.createElement("img");
+      const quantityInput = document.createElement("input");
+
       const contentWrapper = document.createElement("div");
       contentWrapper.className = "contentWrapper";
+
+      const bigImgBox = document.createElement("div");
+      const textContainer = document.createElement("div");
 
       //add
 
@@ -70,6 +73,8 @@ export function productInfo() {
       const smallContainer = document.createElement("div");
       const allWrapper = document.createElement("div");
 
+      textContainer.className = "textContainer";
+      bigImgBox.className = "bigImgBox";
       productContainer.className = "productContainer";
       quantityContainer.className = "quantityContainer";
       smallContainer.className = "small-container";
@@ -87,37 +92,40 @@ export function productInfo() {
       productPage.className = "productPage";
 
       productTitle.textContent = "Karlssons Bönor";
-      productText.textContent =
-        "En len och fyllig smak som breder ut sig lugnt, med  tydliga toner av choklad och en behaglig rundhet i avslutet.";
+      productText.innerHTML =
+        "En len och fyllig smak som breder ut sig lugnt, med  tydliga toner av choklad och en behaglig rundhet i avslutet.<br><strong>Pris:</strong><span class='price'>2 290 kr</span>";
 
       // append
+      // left column
+      bigImgBox.appendChild(bigImg);
+      bigImgContainer.appendChild(bigImgBox);
 
-      // lägg quantityContainer här ↓
-      productContainer.appendChild(quantityContainer);
-
-      //
-      productContainer.appendChild(productTitle);
-      productContainer.appendChild(productText);
-      // productPage.appendChild(productContainer);
-
-      cartButton.appendChild(logo);
-      quantityContainer.appendChild(quantityInput);
-      quantityContainer.appendChild(cartButton);
+      smallImgLeft.appendChild(imgSmallLeft);
+      smallImgCenter.appendChild(imgSmallCenter);
+      smallImgRight.appendChild(imgSmallRight);
 
       smallContainer.appendChild(smallImgLeft);
       smallContainer.appendChild(smallImgCenter);
       smallContainer.appendChild(smallImgRight);
 
-      bigImgContainer.appendChild(bigImg);
-      smallImgLeft.appendChild(imgSmallLeft);
-      smallImgCenter.appendChild(imgSmallCenter);
-      smallImgRight.appendChild(imgSmallRight);
+      bigImgContainer.appendChild(smallContainer);
 
+      //  right column
+      textContainer.appendChild(productTitle);
+      textContainer.appendChild(productText);
+      productContainer.appendChild(textContainer);
+
+      cartButton.appendChild(logo);
+      quantityContainer.appendChild(quantityInput);
+      quantityContainer.appendChild(cartButton);
+      productContainer.appendChild(quantityContainer);
+
+      // content containers
       contentWrapper.appendChild(bigImgContainer);
       contentWrapper.appendChild(productContainer);
-      contentWrapper.appendChild(smallContainer);
-      productPage.appendChild(contentWrapper);
 
+      // product page
+      productPage.appendChild(contentWrapper);
       document.body.appendChild(productPage);
     });
   }
