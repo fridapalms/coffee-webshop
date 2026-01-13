@@ -3,6 +3,7 @@ import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooikeUtils";
+import { products } from "./heroSection/hero";
 
 //Cookie
 cookiePopUp();
@@ -87,6 +88,9 @@ function renderCart() {
     const clearBtn = drawer.querySelector(".clear-btn");
     clearBtn?.remove();
     cartLocalStorage();
+  if (cart.length === 0) {
+    p.textContent = "Din varukorg är tom";
+    list.innerHTML = "";
     return;
   }
 
@@ -151,6 +155,11 @@ function openDrawer() {
 //lägger till i varukorgen +ökar om det är fler av samma
 function addToCart(product: Product) {
   const existing = cart.find((item) => item.product.title === product.title && item.product.weight === product.weight);
+  const existing = cart.find(
+    (item) =>
+      item.product.title === product.title &&
+      item.product.weight === product.weight
+  );
 
   if (existing) {
     existing.quantity += 1;
@@ -180,6 +189,18 @@ const product12: Product = new Product("Kaffebönan", "500g", "En len och fyllig
 
 //Listan med alla 12 produkter
 const allproducts: Product[] = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12];
+
+//skapar en lista med 4 produkter utifrån allproducts
+//loopar igenom listan skapar html för produkterna i nya listan
+
+const popularProducts = allproducts.slice(0, 4);
+popularProducts.forEach((product) => {
+  const popularContainer = document.getElementById("products");
+
+  if (popularContainer) {
+    products(product, addToCart);
+  }
+});
 
 //Loopa genom listan allproducts, skapar HTML för varje produkt
 allproducts.forEach((product) => {

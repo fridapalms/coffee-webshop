@@ -1,65 +1,72 @@
 @use "variables" as *;
 
-.cookie {
+.cookie-overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 300px;
-  width: 500px;
-  background-color: $cart_bg_color;
-  padding: $padding-md;
-  border-radius: 10px;
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.45);
+  .cookie {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    height: 300px;
+    width: 500px;
+    background-color: $cart_bg_color;
+    padding: $padding-md;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 
-  header {
-    display: flex;
-    gap: $padding-md;
+    header {
+      display: flex;
+      gap: $padding-md;
 
-    h1 {
-      font-size: 1.5em;
-    }
+      h1 {
+        font-size: 1.5em;
+      }
 
-    img {
-      width: 2rem;
-    }
-  }
-
-  .cookieButtons {
-    display: flex;
-    gap: $padding-sm;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-right: $padding-md;
-    margin-top: $margin-lg;
-
-    .acceptBtn {
-      width: 180px;
-      height: 25px;
-      background-color: $primary_button_bg;
-      border-radius: 50px;
-      border: none;
-      box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.2s ease-in-out;
-
-      &:hover {
-        background-color: $primary_button_hover;
-        color: white;
+      img {
+        width: 2rem;
       }
     }
 
-    .declineBtn {
-      width: 100px;
-      height: 25px;
-      background-color: $secondary_button_bg;
-      border-radius: 50px;
-      border: none;
-      box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.2s ease-in-out;
+    .cookieButtons {
+      display: flex;
+      gap: $padding-sm;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: $padding-md;
+      margin-top: $margin-lg;
 
-      &:hover {
-        background-color: $secondary_button_hover;
-        color: white;
+      .acceptBtn {
+        width: 180px;
+        height: 25px;
+        background-color: $primary_button_bg;
+        border-radius: 50px;
+        border: none;
+        box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: $primary_button_hover;
+          color: white;
+        }
+      }
+
+      .declineBtn {
+        width: 100px;
+        height: 25px;
+        background-color: $secondary_button_bg;
+        border-radius: 50px;
+        border: none;
+        box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: $secondary_button_hover;
+          color: white;
+        }
       }
     }
   }

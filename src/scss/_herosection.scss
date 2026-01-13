@@ -1,43 +1,112 @@
+@use "variables" as *;
+
+.mainContent {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
 #popular-products {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: $margin-md;
+  margin-top: 8rem;
 }
 
 #products {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0rem;
   gap: 16px;
 }
 .productCard {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  background-color: antiquewhite;
-  border-radius: 5px;
+  width: 260px;
 }
 .productImg {
   display: flex;
   margin: 0 auto;
-  width: 250px;
+  width: 260px;
   height: 250px;
+  background-color: $img_backdrop;
+  border-radius: 5px;
 }
 
-.icon {
-  position: absolute;
-  background-color: rgb(61, 128, 61);
-  border-radius: 4px;
-  bottom: -3rem;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-}
-
-.coffeeText {
+.infoContainer {
   display: flex;
-  margin: 15px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: $padding-sm;
+  gap: 10px;
+}
+
+.cartBtn {
+  background-color: $primary_button_bg;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  bottom: -4rem;
+  right: 10px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+
+  .icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.productInfo {
+  margin-left: $margin-sm;
+  .coffeeTitle {
+    text-transform: uppercase;
+    font-size: 1.1em;
+  }
+
+  .coffeePrice {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $margin-xlg;
+
+  .viewProductsBtn {
+    width: 180px;
+    height: 40px;
+    background-color: $primary_button_bg;
+    color: $primary;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary_button_hover;
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #products {
+    display: flex;
+    flex-direction: column;
+  }
 }
