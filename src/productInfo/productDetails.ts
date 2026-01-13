@@ -37,6 +37,9 @@ export function productInfo() {
       const cartButton = document.createElement("button");
       const logo = document.createElement("img"); //img icon quantity
       const quantityInput = document.createElement("input"); //quantity input
+      // content wrapp
+      const contentWrapper = document.createElement("div");
+      contentWrapper.className = "contentWrapper";
 
       //add
 
@@ -88,14 +91,18 @@ export function productInfo() {
         "En len och fyllig smak som breder ut sig lugnt, med  tydliga toner av choklad och en behaglig rundhet i avslutet.";
 
       // append
+
+      // lägg quantityContainer här ↓
+      productContainer.appendChild(quantityContainer);
+
+      //
       productContainer.appendChild(productTitle);
       productContainer.appendChild(productText);
-      productPage.appendChild(productContainer);
+      // productPage.appendChild(productContainer);
 
       cartButton.appendChild(logo);
       quantityContainer.appendChild(quantityInput);
       quantityContainer.appendChild(cartButton);
-      bigImgContainer.appendChild(quantityContainer);
 
       smallContainer.appendChild(smallImgLeft);
       smallContainer.appendChild(smallImgCenter);
@@ -106,8 +113,10 @@ export function productInfo() {
       smallImgCenter.appendChild(imgSmallCenter);
       smallImgRight.appendChild(imgSmallRight);
 
-      productPage.appendChild(bigImgContainer);
-      productPage.appendChild(smallContainer);
+      contentWrapper.appendChild(bigImgContainer);
+      contentWrapper.appendChild(productContainer);
+      contentWrapper.appendChild(smallContainer);
+      productPage.appendChild(contentWrapper);
 
       document.body.appendChild(productPage);
     });

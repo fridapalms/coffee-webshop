@@ -131,6 +131,9 @@
 }
 
 .bigImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 380px;
   height: 300px;
   background-color: $img_backdrop;
@@ -169,19 +172,18 @@
 // h2 + p container
 .productContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 350px;
+  margin-left: 30rem;
 }
-// input + icon container
-
 .quantityContainer {
   display: flex;
-  justify-content: end;
-  width: 100%;
-  margin-left: 16rem;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
 }
+// input + icon container
 
 //input class
 #quantityProducts {
