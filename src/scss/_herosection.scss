@@ -63,10 +63,18 @@
   }
 }
 
-.coffeeText {
-  display: flex;
-  margin: 15px;
-  font-size: 1em;
+.productInfo {
+  margin-left: $margin-sm;
+  .coffeeTitle {
+    text-transform: uppercase;
+    font-size: 1.1em;
+  }
+
+  .coffeePrice {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
 }
 
 .btnContainer {
@@ -80,7 +88,7 @@
     background-color: $primary_button_bg;
     color: $primary;
     text-decoration: none;
-    font-size: $fontSize;
+    font-size: 1.1em;
     display: flex;
     justify-content: center;
     align-items: center;

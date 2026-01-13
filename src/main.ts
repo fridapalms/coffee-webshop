@@ -8,9 +8,6 @@ import { products } from "./heroSection/hero";
 //Cookie
 cookiePopUp();
 
-//homePage
-products();
-
 // Sparar produkt och antal i varukorgen
 type cartItem = { product: Product; quantity: number };
 const cart: cartItem[] = [];
@@ -252,6 +249,18 @@ const allproducts: Product[] = [
   product11,
   product12,
 ];
+
+//skapar en lista med 4 produkter utifrån allproducts
+//loopar igenom listan skapar html för produkterna i nya listan
+
+const popularProducts = allproducts.slice(0, 4);
+popularProducts.forEach((product) => {
+  const popularContainer = document.getElementById("products");
+
+  if (popularContainer) {
+    products(product, addToCart);
+  }
+});
 
 //Loopa genom listan allproducts, skapar HTML för varje produkt
 allproducts.forEach((product) => {
