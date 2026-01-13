@@ -14,13 +14,21 @@
           <img src="/img/CoffeeLogo.svg" alt="" />
         </a>
 
-        <form class="search" role="search">
-          <input type="search" placeholder="Sök efter produkt" />
+        <form id="searchForm" class="search" role="search">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Sök efter produkt"
+          />
 
           <button type="submit">
             <img src="/img/zoom-out.svg" alt="" />
           </button>
         </form>
+        <div id="searchContainer" class="module">
+          <button type="button" class="close">X</button>
+          <div id="searchResult"></div>
+        </div>
 
         <a href="/" class="cart">
           <img src="/img/bag.svg" alt="" />

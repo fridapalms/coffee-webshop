@@ -1,9 +1,6 @@
 import type { Product } from "../models/Product";
 
-export const products = (
-  product: Product,
-  onAddToCart: (p: Product) => void
-) => {
+export const products = (product: Product, addToCart: (p: Product) => void) => {
   const container = document.getElementById("products");
 
   const card = document.createElement("div");
@@ -20,7 +17,7 @@ export const products = (
   const cartBtn = document.createElement("button");
   cartBtn.className = "cartBtn";
   cartBtn.addEventListener("click", () => {
-    onAddToCart(product);
+    addToCart(product);
   });
 
   const icon = document.createElement("img");
