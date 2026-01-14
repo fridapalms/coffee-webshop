@@ -19,15 +19,17 @@ export function productInfo() {
     img.addEventListener("click", () => {
       // create element
       const productPage = document.createElement("div");
+      const contentWrapper = document.createElement("div");
+
       const bigImg = document.createElement("img");
-      const imgSmallLeft = document.createElement("img");
-      const imgSmallCenter = document.createElement("img");
-      const imgSmallRight = document.createElement("img");
+      const leftImg = document.createElement("img");
+      const centerImg = document.createElement("img");
+      const rightImg = document.createElement("img");
 
       const bigImgContainer = document.createElement("div");
-      const smallImgLeft = document.createElement("div");
-      const smallImgCenter = document.createElement("div");
-      const smallImgRight = document.createElement("div");
+      const smallImgLeftBox = document.createElement("div");
+      const smallImgCenterBox = document.createElement("div");
+      const smallImgRightBox = document.createElement("div");
 
       const productContainer = document.createElement("div");
       const productTitle = document.createElement("h2");
@@ -35,11 +37,12 @@ export function productInfo() {
 
       const quantityContainer = document.createElement("div");
       const cartButton = document.createElement("button");
-      const logo = document.createElement("img");
+      const carts = document.createElement("img");
       const quantityInput = document.createElement("input");
 
-      const contentWrapper = document.createElement("div");
       contentWrapper.className = "contentWrapper";
+      const smallContainer = document.createElement("div");
+      const allWrapper = document.createElement("div");
 
       const bigImgBox = document.createElement("div");
       const textContainer = document.createElement("div");
@@ -50,28 +53,25 @@ export function productInfo() {
       cartButton.className = "cartbtn";
 
       bigImg.src = productimg[0].numhero;
-      imgSmallRight.src = productimg[0].num1;
-      imgSmallCenter.src = productimg[0].num2;
-      imgSmallLeft.src = productimg[0].num3;
-      logo.src = productimg[0].cart;
+      leftImg.src = productimg[0].num1;
+      rightImg.src = productimg[0].num2;
+      centerImg.src = productimg[0].num3;
+      carts.src = productimg[0].cart;
 
       bigImg.alt = "coffeeImg";
-      imgSmallLeft.alt = "coffeeImg2";
-      imgSmallCenter.alt = "coffeeImg3";
-      imgSmallRight.alt = "coffeeImg4";
-      logo.alt = "addtocart";
+      leftImg.alt = "coffeeImg2";
+      centerImg.alt = "coffeeImg3";
+      rightImg.alt = "coffeeImg4";
+      carts.alt = "addtocart";
 
-      logo.className = "cartimg";
-      logo.id = "cartid";
+      carts.className = "cartimg";
+      carts.id = "cartid";
 
       quantityInput.type = "number";
       quantityInput.value = "1";
       quantityInput.min = "1";
       quantityInput.id = "quantityProducts";
       quantityInput.readOnly = true;
-
-      const smallContainer = document.createElement("div");
-      const allWrapper = document.createElement("div");
 
       textContainer.className = "textContainer";
       bigImgBox.className = "bigImgBox";
@@ -81,14 +81,14 @@ export function productInfo() {
       allWrapper.className = "all-wrapper";
       bigImgContainer.className = "bigImgContainer";
 
-      smallImgLeft.className = "smallImgLeft";
-      smallImgCenter.className = "smallImgCenter";
-      smallImgRight.className = "smallImgRight";
+      smallImgLeftBox.className = "smallImgLeftBox";
+      smallImgCenterBox.className = "smallImgCenterBox";
+      smallImgRightBox.className = "smallImgRightBox";
 
       bigImg.className = "bigImg";
-      imgSmallLeft.className = "imgSmallLeft";
-      imgSmallCenter.className = "imgSmallCenter";
-      imgSmallLeft.className = "imgSmallLeft";
+      leftImg.className = "leftImg";
+      centerImg.className = "canterImg";
+      rightImg.className = "rightImg";
       productPage.className = "productPage";
 
       productTitle.textContent = "Karlssons Bönor";
@@ -100,13 +100,13 @@ export function productInfo() {
       bigImgBox.appendChild(bigImg);
       bigImgContainer.appendChild(bigImgBox);
 
-      smallImgLeft.appendChild(imgSmallLeft);
-      smallImgCenter.appendChild(imgSmallCenter);
-      smallImgRight.appendChild(imgSmallRight);
+      smallImgLeftBox.appendChild(leftImg);
+      smallImgCenterBox.appendChild(centerImg);
+      smallImgRightBox.appendChild(rightImg);
 
-      smallContainer.appendChild(smallImgLeft);
-      smallContainer.appendChild(smallImgCenter);
-      smallContainer.appendChild(smallImgRight);
+      smallContainer.appendChild(smallImgLeftBox);
+      smallContainer.appendChild(smallImgCenterBox);
+      smallContainer.appendChild(smallImgRightBox);
 
       bigImgContainer.appendChild(smallContainer);
 
@@ -115,7 +115,7 @@ export function productInfo() {
       textContainer.appendChild(productText);
       productContainer.appendChild(textContainer);
 
-      cartButton.appendChild(logo);
+      cartButton.appendChild(carts);
       quantityContainer.appendChild(quantityInput);
       quantityContainer.appendChild(cartButton);
       productContainer.appendChild(quantityContainer);

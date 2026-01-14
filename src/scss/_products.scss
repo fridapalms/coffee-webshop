@@ -146,6 +146,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+
   // big img container
   .bigImgBox {
     width: 380px;
@@ -171,9 +172,9 @@
   gap: 10px;
   width: 400px;
   // ALL small images
-  .smallImgLeft,
-  .smallImgCenter,
-  .smallImgRight {
+  .smallImgLeftBox,
+  .smallImgCenterBox,
+  .smallImgRightBox {
     width: 120px;
     height: 120px;
     border-radius: 5px;
