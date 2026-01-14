@@ -446,10 +446,19 @@ buybtn?.addEventListener("click", () => {
 document.getElementById("searchForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const searchContainer = document.getElementById("searchResult");
-  if (searchContainer) {
-    searchContainer.innerHTML = "";
+  const searchOverlay = document.getElementById("searchOverlay");
+  const searchResult = document.getElementById("searchResult");
+  const searchContainer = document.getElementById("searchContainer");
+
+  if (searchOverlay && searchResult && searchContainer) {
+    searchResult.innerHTML = "";
+    searchOverlay.classList.add("open");
+    searchOverlay.addEventListener("click", () => {
+      searchOverlay.classList.remove("open");
+      searchContainer.style.visibility = "hidden";
+    });
   }
+
   const theInput = document.getElementById("searchInput") as HTMLInputElement;
 
   let search = theInput.value.trim();
@@ -459,7 +468,7 @@ document.getElementById("searchForm")?.addEventListener("submit", (e) => {
   allproducts.forEach((product) => {
     if (product.title.toLowerCase().includes(search.toLowerCase())) {
       found = true;
-      showResult(product);
+      showResult(product, addToCart);
       console.log(product);
     }
   });

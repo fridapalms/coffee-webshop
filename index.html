@@ -21,11 +21,11 @@
             placeholder="Sök efter produkt"
           />
 
-          <button type="submit">
+          <button class="searchBtn" type="submit">
             <img src="/img/zoom-out.svg" alt="" />
           </button>
+          <div class="search-overlay" id="searchOverlay"></div>
           <div id="searchContainer" class="module">
-            <button type="button" class="close">X</button>
             <div id="searchResult" class="searchContainer"></div>
           </div>
         </form>
@@ -62,7 +62,7 @@
 
     <div class="overlay" id="cartOverlay">
       <aside class="drawer">
-        <button class="close" type="button">X</button>
+        <button class="close" type="button">✕</button>
         <h2>Varukorg</h2>
         <p>Din varukorg är tom</p>
       </aside>

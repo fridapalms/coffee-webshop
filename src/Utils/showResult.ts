@@ -1,8 +1,8 @@
 import type { Product } from "../models/Product";
 
 export const showResult = (
-  product: Product
-  //   addToCart: (p: Product) => void
+  product: Product,
+  addToCart: (p: Product) => void
 ) => {
   const searchContainer = document.getElementById("searchContainer");
 
@@ -29,14 +29,17 @@ export const showResult = (
   imgContainer.className = "imgContainer";
   img.src = product.heroimage;
   img.alt = "Photo of " + product.title;
-  infoContainer.className = "infoContainer";
+  infoContainer.className = "detailsContainer";
   title.className = "title";
   title.innerHTML = product.title;
   price.className = "price";
   price.innerHTML = product.price;
   weight.className = "weight";
   weight.innerHTML = product.weight;
-  cartBtn.className = "cartBtn";
+  cartBtn.className = "cartButton";
+  cartBtn.addEventListener("click", () => {
+    addToCart(product);
+  });
   cartIcon.src = product.carticon;
 
   //Placera Element
