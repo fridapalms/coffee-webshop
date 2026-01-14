@@ -80,6 +80,7 @@ function renderCart() {
     drawer.appendChild(list);
   }
 
+  // Totalpris varukorgen
   let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
   if (!totalSumCart) {
     totalSumCart = document.createElement("div");
@@ -115,6 +116,7 @@ function renderCart() {
     img.src = item.product.heroimage;
     img.alt = item.product.title;
 
+    // Totalpris kassan
     const text = document.createElement("div");
     text.className = "cart-item-text";
     const unitPrice = stackPrice(item.product.price);
