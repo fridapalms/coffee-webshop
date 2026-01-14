@@ -30,6 +30,11 @@ export const createHtml = (product: Product, onAddToCart: (p: Product) => void) 
   cartimg.className = "cartimg";
   cartimg.src = product.carticon;
 
+  //productinfo
+  producttitle.addEventListener("click", () => {
+    productInfo(product);
+  });
+
   cartbtn.addEventListener("click", () => {
     onAddToCart(product);
   });
@@ -45,6 +50,3 @@ export const createHtml = (product: Product, onAddToCart: (p: Product) => void) 
   productcard.appendChild(infodiv);
   productsdiv?.appendChild(productcard);
 };
-
-//anropa productInfo
-productInfo();

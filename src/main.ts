@@ -290,5 +290,3 @@ if (cartBtn && overlay && closeBtn) {
 }
 
 renderCart();
-// anropa productInfo
-productInfo();
