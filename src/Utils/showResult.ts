@@ -4,7 +4,15 @@ export const showResult = (
   product: Product
   //   addToCart: (p: Product) => void
 ) => {
-  const module = document.getElementById("searchResult");
+  const searchContainer = document.getElementById("searchContainer");
+
+  if (searchContainer) {
+    searchContainer.style.visibility = "visible";
+  }
+
+  let module = document.getElementById("searchResult");
+  if (!module) return;
+
   // skapa element
   const coffeeCard = document.createElement("div");
   const imgContainer = document.createElement("div");
@@ -23,8 +31,11 @@ export const showResult = (
   img.alt = "Photo of " + product.title;
   infoContainer.className = "infoContainer";
   title.className = "title";
+  title.innerHTML = product.title;
   price.className = "price";
+  price.innerHTML = product.price;
   weight.className = "weight";
+  weight.innerHTML = product.weight;
   cartBtn.className = "cartBtn";
   cartIcon.src = product.carticon;
 

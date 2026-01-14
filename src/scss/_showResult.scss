@@ -1,0 +1,11 @@
+@use "variables" as *;
+
+.module {
+  visibility: hidden;
+  position: absolute;
+  left: -75%;
+  background-color: $cart-bg-color;
+  height: 600px;
+  width: 800px;
+  border-radius: 10px;
+}

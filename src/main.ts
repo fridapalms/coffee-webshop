@@ -4,6 +4,7 @@ import "./scss/style.scss";
 import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
+import { showResult } from "./Utils/showResult";
 
 //Cookie
 cookiePopUp();
@@ -196,7 +197,7 @@ const product1: Product = new Product(
   "#"
 );
 const product2: Product = new Product(
-  "Kaffebönan",
+  "Kaffekonrads",
   "250g",
   "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
   "199kr",
@@ -220,7 +221,7 @@ const product3: Product = new Product(
   "#"
 );
 const product4: Product = new Product(
-  "Kaffebönan",
+  "Kaffekonrads",
   "500g",
   "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
   "399kr",
@@ -445,17 +446,21 @@ buybtn?.addEventListener("click", () => {
 document.getElementById("searchForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const searchContainer = document.getElementById("searchResult");
+  if (searchContainer) {
+    searchContainer.innerHTML = "";
+  }
   const theInput = document.getElementById("searchInput") as HTMLInputElement;
 
-  const search = theInput.value.trim();
+  let search = theInput.value.trim();
 
   let found = false;
 
   allproducts.forEach((product) => {
     if (product.title.toLowerCase().includes(search.toLowerCase())) {
-      // showResult();
       found = true;
-      console.log(product.title);
+      showResult(product);
+      console.log(product);
     }
   });
   if (!found) {
