@@ -83,3 +83,9 @@
 .cart-item-text {
   color: $primary;
 }
+
+.checkout-item-image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}

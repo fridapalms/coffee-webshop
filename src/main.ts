@@ -63,6 +63,7 @@ function clearCart() {
   cart.length = 0;
   cartLocalStorage();
   renderCart();
+  checkoutCart();
 }
 
 // uppdaterar innehållet i varukorgen
@@ -79,6 +80,13 @@ function renderCart() {
     drawer.appendChild(list);
   }
 
+  let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
+  if (!totalSumCart) {
+    totalSumCart = document.createElement("div");
+    totalSumCart.className = "cart-total";
+    drawer.appendChild(totalSumCart);
+  }
+
   // Döljer kassa knappen när varukorgen är tom
   if (cart.length === 0) {
     p.textContent = "Din varukorg är tom";
@@ -93,6 +101,7 @@ function renderCart() {
 
   p.textContent = "";
   list.innerHTML = "";
+  let cartTotal = 0;
 
   // loopar igenom varukorgen och bygger HTML
   for (let i = 0; i < cart.length; i++) {
@@ -110,12 +119,15 @@ function renderCart() {
     text.className = "cart-item-text";
     const unitPrice = stackPrice(item.product.price);
     const totalPrice = unitPrice * item.quantity;
+    cartTotal += totalPrice;
     text.textContent = `${item.product.title} x${item.quantity} (${totalPrice} kr)`;
 
     row.appendChild(img);
     row.appendChild(text);
     list.appendChild(row);
   }
+
+  totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
   let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
@@ -141,6 +153,43 @@ function renderCart() {
     clearBtn.addEventListener("click", clearCart);
     drawer.appendChild(clearBtn);
   }
+}
+
+// rendera varukorgen på shop-sidan
+function checkoutCart () {
+  const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
+  const sumCart = document.querySelector(".sum") as HTMLElement | null;
+
+  if (!basket || !sumCart) return;
+
+  if (cart.length === 0) {
+    basket.textContent = "Din varukorg är tom.";
+    sumCart.textContent = "Summa: 0 kr"
+    return;
+  }
+  basket.innerHTML = "";
+  let totalSum = 0;
+
+  cart.forEach((item) => {
+    const unitPrice = stackPrice(item.product.price);
+    const itemTotal = unitPrice * item.quantity;
+    totalSum +=itemTotal;
+
+    const row = document.createElement("div");
+    row.className = "checkout-item";
+
+    const img = document.createElement("img");
+    img.src = item.product.heroimage;
+    img.alt = item.product.title;
+    img.className = "checkout-item-image";
+    row.appendChild(img);
+
+    const text = document.createElement("div");
+    text.textContent = `${item.product.title} (${item.product.weight}) x${item.quantity} - ${itemTotal} kr`;
+    row.appendChild(text);
+    basket.appendChild(row);
+  });
+  sumCart.textContent = `Totalpris: ${totalSum} kr`;
 }
 
 // öppnar varukorgen
@@ -237,6 +286,7 @@ if (cartBtn && overlay && closeBtn) {
 }
 
 renderCart();
+checkoutCart();
 
 //------ shop.html - start -----
 //
