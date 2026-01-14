@@ -1,7 +1,4 @@
 @use "variables" as *;
-
-$header-height: 100px;
-$header-bg: #2d221e;
 $radius: 10px;
 
 *::before,
@@ -9,14 +6,8 @@ $radius: 10px;
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .header {
-  background-color: $header-bg;
+  background-color: $primary;
   height: $header-height;
   width: 100%;
   display: flex;
@@ -56,12 +47,17 @@ body {
   border-radius: $radius;
   border: none;
   outline: none;
-  background: #f4ede2;
-  color: $header-bg;
+  background: $bg_color;
+  color: $primary;
   opacity: 50%;
 
+  &:hover,
+  &:focus {
+    opacity: 70%;
+  }
+
   &::placeholder {
-    color: $header-bg;
+    color: $primary;
   }
 }
 

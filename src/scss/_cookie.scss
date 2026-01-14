@@ -4,7 +4,8 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.45);
+  background: $overlay;
+
   .cookie {
     position: fixed;
     top: 50%;
@@ -16,7 +17,7 @@
     background-color: $cart_bg_color;
     padding: $padding-md;
     border-radius: 10px;
-    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: $box-shadow;
 
     header {
       display: flex;
@@ -41,31 +42,33 @@
 
       .acceptBtn {
         width: 180px;
-        height: 25px;
+        height: 30px;
         background-color: $primary_button_bg;
         border-radius: 50px;
         border: none;
-        box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
-        transition: background-color 0.2s ease-in-out;
+        box-shadow: $box-shadow;
+        transition: $transition;
 
         &:hover {
           background-color: $primary_button_hover;
-          color: white;
+          color: $bg_color;
+          box-shadow: $box-shadow, $inset;
         }
       }
 
       .declineBtn {
         width: 100px;
-        height: 25px;
+        height: 30px;
         background-color: $secondary_button_bg;
         border-radius: 50px;
         border: none;
         box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
-        transition: background-color 0.2s ease-in-out;
+        transition: $transition;
 
         &:hover {
           background-color: $secondary_button_hover;
-          color: white;
+          color: $bg_color;
+          box-shadow: $box-shadow, $inset;
         }
       }
     }

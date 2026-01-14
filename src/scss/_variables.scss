@@ -7,13 +7,19 @@ $primary: #2d221e;
 $secondary: #dccbb6;
 $bg_color: #f4ede2;
 $cart_bg_color: #b68a63;
+$img_backdrop: #e3d6c4;
+
+// button colors
 $primary_button_bg: #6f7f3a;
 $secondary_button_bg: #dccbb6;
-
 $primary_button_hover: #515d2a;
 $secondary_button_hover: #8c3a2b;
 
-$img_backdrop: #e3d6c4;
+// shadows and overlays
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+$inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+$overlay: rgba(0, 0, 0, 0.45);
+$transition: all 0.2s ease;
 
 // padding, margin... har bara skapat ungefär kan ändras
 $margin-sm: 0.5rem;
@@ -26,7 +32,10 @@ $padding-md: 1rem;
 $padding-lg: 1.5rem;
 
 $line-height: 1.5rem;
+
 $button-size: 3rem;
+$drawer-width: 360px;
+$header-height: 100px;
 
 // breakpoints
 $tablet_breakpoint: 990px;
