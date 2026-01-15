@@ -55,3 +55,22 @@ export const showResult = (
 
   module?.appendChild(coffeeCard);
 };
+
+export const searchNotFound = () => {
+  const searchContainer = document.getElementById("searchContainer");
+
+  if (searchContainer) {
+    searchContainer.style.visibility = "visible";
+  }
+
+  let module = document.getElementById("searchResult");
+  if (!module) return;
+
+  const errorMessage = document.createElement("p");
+
+  errorMessage.className = "errorMessage";
+  errorMessage.innerHTML =
+    "Hoppsan! Vi kunde inte hitta något som matchar din sökning.";
+
+  module.appendChild(errorMessage);
+};

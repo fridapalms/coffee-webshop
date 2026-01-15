@@ -4,7 +4,7 @@ import "./scss/style.scss";
 import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
-import { showResult } from "./Utils/showResult";
+import { searchNotFound, showResult } from "./Utils/showResult";
 
 //Cookie
 cookiePopUp();
@@ -449,6 +449,8 @@ document.getElementById("searchForm")?.addEventListener("submit", (e) => {
   const searchOverlay = document.getElementById("searchOverlay");
   const searchResult = document.getElementById("searchResult");
   const searchContainer = document.getElementById("searchContainer");
+  const theInput = document.getElementById("searchInput") as HTMLInputElement;
+  if (!theInput) return;
 
   if (searchOverlay && searchResult && searchContainer) {
     searchResult.innerHTML = "";
@@ -456,13 +458,11 @@ document.getElementById("searchForm")?.addEventListener("submit", (e) => {
     searchOverlay.addEventListener("click", () => {
       searchOverlay.classList.remove("open");
       searchContainer.style.visibility = "hidden";
+      theInput.value = "";
     });
   }
 
-  const theInput = document.getElementById("searchInput") as HTMLInputElement;
-
   let search = theInput.value.trim();
-
   let found = false;
 
   allproducts.forEach((product) => {
@@ -473,6 +473,7 @@ document.getElementById("searchForm")?.addEventListener("submit", (e) => {
     }
   });
   if (!found) {
+    searchNotFound();
     console.log("ERRRORORORO!");
   }
 });
