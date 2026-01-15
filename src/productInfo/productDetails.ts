@@ -6,9 +6,8 @@ const textDivs = document.getElementsByClassName("textdiv");
 const productContent = products;
 
 for (let i = 0; i < productContent.length; i++) {
-  const product = productContent[i];
-
   (imgDivs[i] as HTMLElement).addEventListener("click", () => {
+    const product = productContent[i];
     productInfo(product);
   });
 
@@ -61,11 +60,11 @@ export function productInfo(product: Product) {
 
   bigImgBox.innerHTML = "";
 
-  bigImg.src = productimg[0].numhero; //KOPPLA
-  leftImg.src = productimg[0].num1;
-  rightImg.src = productimg[0].num2;
-  centerImg.src = productimg[0].num3;
-  carts.src = productimg[0].cart;
+  bigImg.src = productimg[0].numhero; //KOPPLA ------------------------
+  leftImg.src = productimg[0].num1; //------------------
+  rightImg.src = productimg[0].num2; //------------------
+  centerImg.src = productimg[0].num3; //-------------------
+  carts.src = productimg[0].cart; //-----------------------
 
   bigImg.alt = "coffeeImg";
   leftImg.alt = "coffeeImg2";

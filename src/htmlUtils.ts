@@ -35,6 +35,14 @@ export const createHtml = (product: Product, onAddToCart: (p: Product) => void) 
     productInfo(product);
   });
 
+  imgdiv.addEventListener("click", () => {
+    productInfo(product);
+  });
+
+  textdiv.addEventListener("click", () => {
+    productInfo(product);
+  });
+
   cartbtn.addEventListener("click", () => {
     onAddToCart(product);
   });
