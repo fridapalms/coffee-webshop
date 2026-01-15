@@ -16,8 +16,8 @@ for (let i = 0; i < productContent.length; i++) {
     productInfo(product);
   });
 }
-//-------------------------------------------------
-export function productsInfo(product: Product, addToCart: (p: Product) => void) {
+//------
+export function productInfo(product: Product, addToCart: (p: Product) => void) {
   //------------------------------------------------------
 
   //export function productInfo(product: Product) {
@@ -69,6 +69,12 @@ export function productsInfo(product: Product, addToCart: (p: Product) => void) 
   rightImg.src = productimg[0].num2; //------------------
   centerImg.src = productimg[0].num3; //-------------------
   carts.src = productimg[0].cart; //-----------------------
+  //cartImg.src = product.carticon;
+
+  cartButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    addToCart(product);
+  });
 
   bigImg.alt = "coffeeImg";
   leftImg.alt = "coffeeImg2";

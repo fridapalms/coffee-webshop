@@ -32,15 +32,15 @@ export const createHtml = (product: Product, onAddToCart: (p: Product) => void) 
 
   //productinfo
   producttitle.addEventListener("click", () => {
-    productInfo(product);
+    productInfo(product, onAddToCart);
   });
 
   imgdiv.addEventListener("click", () => {
-    productInfo(product);
+    productInfo(product, onAddToCart);
   });
 
   textdiv.addEventListener("click", () => {
-    productInfo(product);
+    productInfo(product, onAddToCart);
   });
 
   cartbtn.addEventListener("click", () => {
