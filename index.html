@@ -14,12 +14,20 @@
           <img src="/img/CoffeeLogo.svg" alt="" />
         </a>
 
-        <form class="search" role="search">
-          <input type="search" placeholder="Sök efter produkt" />
+        <form id="searchForm" class="search" role="search">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Sök efter produkt"
+          />
 
-          <button type="submit">
+          <button class="searchBtn" type="submit">
             <img src="/img/zoom-out.svg" alt="" />
           </button>
+          <div class="search-overlay" id="searchOverlay"></div>
+          <div id="searchContainer" class="module">
+            <div id="searchResult" class="searchContainer"></div>
+          </div>
         </form>
 
         <a href="/" class="cart">
@@ -54,7 +62,7 @@
 
     <div class="overlay" id="cartOverlay">
       <aside class="drawer">
-        <button class="close" type="button">X</button>
+        <button class="close" type="button">✕</button>
         <h2>Varukorg</h2>
         <p>Din varukorg är tom</p>
       </aside>

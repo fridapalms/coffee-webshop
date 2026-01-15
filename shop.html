@@ -14,12 +14,20 @@
           <img src="/img/CoffeeLogo.svg" alt="" />
         </a>
 
-        <form class="search" role="search">
-          <input type="search" placeholder="Sök efter produkt" />
+        <form id="searchForm" class="search" role="search">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Sök efter produkt"
+          />
 
-          <button type="submit">
+          <button class="searchBtn" type="submit">
             <img src="/img/zoom-out.svg" alt="" />
           </button>
+          <div class="search-overlay" id="searchOverlay"></div>
+          <div id="searchContainer" class="module">
+            <div id="searchResult" class="searchContainer"></div>
+          </div>
         </form>
 
         <a href="/" class="cart">
@@ -30,72 +38,103 @@
 
     <div class="overlay" id="cartOverlay">
       <aside class="drawer">
-        <button class="close" type="button">X</button>
+        <button class="close" type="button">✕</button>
         <h2>Varukorg</h2>
         <p>Din varukorg är tom</p>
       </aside>
     </div>
     <div id="app">
       <section class="shop">
+        <div class="buy">
+          <h1>Slutför ditt köp</h1>
+          <div class="basket">
+            <h2>Varukorg:</h2>
+            <div class="basket-display">
+              Varor här, varukorgslistans HTML loopas fram i JS
+            </div>
+            <h2 class="sum">Summa: Varornas kombinerade pris visas här</h2>
+          </div>
 
-            <div class="buy">
-                <h1>Slutför ditt köp</h1>
+          <div class="form">
+            <h3>Leveransadress:</h3>
+            <div class="delivery">
+              <form action="#" class="contact" id="buyform">
+                <label for="fname">Förnamn:</label>
+                <input type="text" id="fname" name="fname" />
+                <label for="lname">Efternamn:</label>
+                <input type="text" id="lname" name="lname" />
 
-                  <div class="basket">
-                    <h2>Varukorg:</h2>
-                    <div class="basket-display">Varor här, varukorgslistans HTML loopas fram i JS</div>
-                    <h2 class="sum">Summa: Varornas kombinerade pris visas här</h2>
+                <label for="addess">Gatuadress:</label>
+                <input type="text" id="address" name="address" />
+
+                <label for="postcode">Postnummer:</label>
+                <input type="text" id="postcode" name="postcode" />
+                <label for="city">Stad:</label>
+                <input type="text" id="city" name="city" />
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" />
+                <label for="phone">Telefonnummer:</label>
+                <input type="text" id="phone" name="phone" />
+
+                <h3>Betalmetod:</h3>
+
+                <div class="payment">
+                  <div class="payment-method">
+                    <input
+                      type="radio"
+                      id="klarna"
+                      name="payment_method"
+                      value="klarna"
+                      class="clickable"
+                    />
+                    <label for="klarna"
+                      ><img
+                        src="/klarna.png"
+                        class="payment-img clickable"
+                        alt="Klarna"
+                    /></label>
                   </div>
+                  <div class="payment-method">
+                    <input
+                      type="radio"
+                      id="swish"
+                      name="payment_method"
+                      value="swish"
+                      class="clickable"
+                    />
+                    <label for="swish"
+                      ><img
+                        src="/swish.svg"
+                        class="payment-img clickable"
+                        alt="Swish"
+                    /></label>
+                  </div>
+                  <div class="payment-method">
+                    <input
+                      type="radio"
+                      id="kort"
+                      name="payment_method"
+                      value="kort"
+                      class="clickable"
+                    />
+                    <label for="kort" class="clickable">Kortbetalning</label>
+                  </div>
+                </div>
 
-                  <div class="form">
-
-                    <h3>Leveransadress:</h3>
-                    
-                    
-                        <div class="delivery">
-                          <form action="#" class="contact" id="buyform">
-                          <label for="fname">Förnamn:</label>
-                          <input type="text" id="fname" name="fname">
-                          <label for="lname">Efternamn:</label>
-                          <input type="text" id="lname" name="lname">
-
-                          <label for="addess">Gatuadress:</label>
-                          <input type="text" id="address" name="address">
-
-                          <label for="postcode">Postnummer:</label>
-                          <input type="text" id="postcode" name="postcode">
-                          <label for="city">Stad:</label>
-                          <input type="text" id="city" name="city">
-
-                          <label for="email">Email:</label>
-                          <input type="text" id="email" name="email">
-                          <label for="phone">Telefonnummer:</label>
-                          <input type="text" id="phone" name="phone">
-                        </div>
-
-                          <h3>Betalmetod:</h3>
-                          
-                          <div class="payment">
-                            <div class="payment-method">
-                              <input type="radio" id="klarna" name="payment_method" value="klarna" class="clickable">
-                              <label for="klarna"><img src="/klarna.png" class="payment-img clickable" alt="Klarna"></label>
-                            </div>
-                            <div class="payment-method">
-                              <input type="radio" id="swish" name="payment_method" value="swish" class="clickable">
-                              <label for="swish"><img src="/swish.svg" class="payment-img clickable" alt="Swish"></label>
-                            </div>
-                            <div class="payment-method">
-                              <input type="radio" id="kort" name="payment_method" value="kort" class="clickable">
-                              <label for="kort" class="clickable">Kortbetalning</label>
-                            </div>
-                          </div>
-                    </div>  
-
-                <a href="#header" class="buylink"><button type="button" class="buybtn" id="buybtn">Bekräfta köp</button></a>
-                    </form>
-                    <a href="/products.html" class="linkreset"><button class="keepshoppingbtn">Fortsätt shoppa</button></a>
-              </div>
-              <dialog class="modal" id="modal"></dialog>
+                <a href="#header" class="buylink"
+                  ><button type="button" class="buybtn" id="buybtn">
+                    Bekräfta köp
+                  </button></a
+                >
+              </form>
+              <a href="/products.html" class="linkreset"
+                ><button class="keepshoppingbtn">Fortsätt shoppa</button></a
+              >
+            </div>
+          </div>
+        </div>
+        <dialog class="modal" id="modal"></dialog>
       </section>
 
       <footer>
@@ -112,9 +151,15 @@
           </section>
           <section class="socialLinksContainer">
             <div class="socialLinks">
-              <img src="assets/instagram.svg" alt="Link to CoffeeShop instagram" />
+              <img
+                src="assets/instagram.svg"
+                alt="Link to CoffeeShop instagram"
+              />
               <img src="assets/tiktok.svg" alt="Link to CoffeeShop tiktok" />
-              <img src="assets/messenger.svg" alt="Link to CoffeeShop messenger" />
+              <img
+                src="assets/messenger.svg"
+                alt="Link to CoffeeShop messenger"
+              />
             </div>
           </section>
         </div>
