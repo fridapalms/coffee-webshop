@@ -92,6 +92,7 @@ function renderCart() {
   if (cart.length === 0) {
     p.textContent = "Din varukorg är tom";
     list.innerHTML = "";
+    totalSumCart.textContent = ""
     const checkoutBtn = drawer.querySelector(".checkout-btn");
     checkoutBtn?.remove();
     const clearBtn = drawer.querySelector(".clear-btn");
