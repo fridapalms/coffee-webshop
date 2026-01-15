@@ -60,7 +60,6 @@ export function productInfo(product: Product) {
   const textContainer = document.createElement("div");
 
   bigImgBox.innerHTML = "";
-  //add
 
   bigImg.src = productimg[0].numhero; //KOPPLA
   leftImg.src = productimg[0].num1;
