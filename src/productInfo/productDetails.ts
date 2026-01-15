@@ -16,7 +16,7 @@ for (let i = 0; i < productContent.length; i++) {
     productInfo(product);
   });
 }
-
+//------------------------------------------------------
 export function productInfo(product: Product) {
   const productimg = [
     {
@@ -27,14 +27,6 @@ export function productInfo(product: Product) {
       cart: "/public/img/vector.png",
     },
   ];
-
-  // create HTML
-  //for (let i = 0; i < imgDivs.length; i++) {
-  // const img = imgDivs[i] as HTMLDivElement;
-  //const product = products[i];
-  // const textInfo = textDivs[i] as HTMLDivElement; koppla!!!!
-
-  //img.addEventListener("click", () => {
 
   //page + allcontent
   const productPage = document.createElement("div");
