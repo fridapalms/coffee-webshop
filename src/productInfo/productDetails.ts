@@ -16,8 +16,11 @@ for (let i = 0; i < productContent.length; i++) {
     productInfo(product);
   });
 }
-//------------------------------------------------------
-export function productInfo(product: Product) {
+//-------------------------------------------------
+export function productsInfo(product: Product, addToCart: (p: Product) => void) {
+  //------------------------------------------------------
+
+  //export function productInfo(product: Product) {
   const productimg = [
     {
       num3: "/public/extra3.png",
