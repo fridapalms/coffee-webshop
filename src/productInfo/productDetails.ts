@@ -6,8 +6,9 @@ const textDivs = document.getElementsByClassName("textdiv");
 const productContent = products;
 
 for (let i = 0; i < productContent.length; i++) {
+  const product = productContent[i];
+
   (imgDivs[i] as HTMLElement).addEventListener("click", () => {
-    const product = productContent[i];
     productInfo(product);
   });
 
