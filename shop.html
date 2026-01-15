@@ -10,25 +10,25 @@
   <body>
     <header class="header" id="header">
       <nav class="nav">
-        <a href="/" class="header-logo">
-          <img src="/img/CoffeeLogo.svg" alt="" />
-        </a>
+        <div class="logo-div"></div>
+        <div class="search-div">
+          <form id="searchForm" class="search" role="search">
+            <input id="searchInput" type="search" placeholder="Sök efter produkt" />
 
-        <form id="searchForm" class="search" role="search">
-          <input id="searchInput" type="search" placeholder="Sök efter produkt" />
-
-          <button class="searchBtn" type="submit">
-            <img src="/img/zoom-out.svg" alt="" />
-          </button>
-          <div class="search-overlay" id="searchOverlay"></div>
-          <div id="searchContainer" class="module">
-            <div id="searchResult" class="searchContainer"></div>
-          </div>
-        </form>
-
-        <a href="/" class="cart">
-          <img src="/img/bag.svg" alt="" />
-        </a>
+            <button class="searchBtn" type="submit">
+              <img src="/img/zoom-out.svg" alt="" />
+            </button>
+            <div class="search-overlay" id="searchOverlay"></div>
+            <div id="searchContainer" class="module">
+              <div id="searchResult" class="searchContainer"></div>
+            </div>
+          </form>
+        </div>
+        <div class="bag-div">
+          <a href="/" class="cart">
+            <img src="/img/bag.svg" alt="" />
+          </a>
+        </div>
       </nav>
     </header>
 
