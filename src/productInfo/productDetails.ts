@@ -18,8 +18,6 @@ for (let i = 0; i < productContent.length; i++) {
 }
 
 export function productInfo(product: Product) {
-  //const imgDivs = document.getElementsByClassName("imgdiv");
-  // const textDivs = document.querySelectorAll<HTMLDivElement>(".textdiv");
   const productimg = [
     {
       num3: "/public/extra3.png",
@@ -37,16 +35,18 @@ export function productInfo(product: Product) {
   // const textInfo = textDivs[i] as HTMLDivElement; koppla!!!!
 
   //img.addEventListener("click", () => {
+
   //page + allcontent
   const productPage = document.createElement("div");
   const contentWrapper = document.createElement("div");
 
-  //images
+  // all images
   const bigImg = document.createElement("img");
   const leftImg = document.createElement("img");
   const centerImg = document.createElement("img");
   const rightImg = document.createElement("img");
 
+  //images containers
   const bigImgContainer = document.createElement("div");
   const smallImgLeftBox = document.createElement("div");
   const smallImgCenterBox = document.createElement("div");
@@ -70,7 +70,7 @@ export function productInfo(product: Product) {
   bigImgBox.innerHTML = "";
   //add
 
-  //bigImg.src = productimg[0].numhero; KOPPLA
+  bigImg.src = productimg[0].numhero; //KOPPLA
   leftImg.src = productimg[0].num1;
   rightImg.src = productimg[0].num2;
   centerImg.src = productimg[0].num3;
@@ -117,7 +117,6 @@ export function productInfo(product: Product) {
   productText.innerHTML = `
         En len och fyllig smak som breder ut sig lugnt, med  tydliga toner av choklad och en behaglig rundhet i avslutet.<br><strong>Pris:</strong><span class='price'>${product.price}</span>`;
 
-  // append
   // left column
   bigImgBox.appendChild(bigImg);
   bigImgContainer.appendChild(bigImgBox);
@@ -146,16 +145,12 @@ export function productInfo(product: Product) {
   contentWrapper.appendChild(bigImgContainer);
   contentWrapper.appendChild(productContainer);
 
-  // product page
-
   productPage.appendChild(contentWrapper);
 
   //closebutton
-
-  //button close page
   closeButton(productPage);
+
   document.body.appendChild(productPage);
-  // });
 
   function closeButton(productPage: HTMLElement) {
     const closeBtn = document.createElement("button");
