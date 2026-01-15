@@ -102,6 +102,7 @@
   box-shadow: $box-shadow;
   transition: $transition;
   cursor: pointer;
+  margin-bottom: $margin-xlg;
 
   &:hover {
     background-color: $primary_button_hover;
