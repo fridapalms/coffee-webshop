@@ -114,3 +114,146 @@
 .linkreset {
   text-decoration: none;
 }
+
+//productPage
+.productPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 68rem;
+  height: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background-color: $bg_color;
+  z-index: 1000;
+}
+
+.contentWrapper {
+  // Allt innehåll
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.bigImgContainer {
+  // vänster kolumn
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  // big img container
+  .bigImgBox {
+    width: 380px;
+    height: 300px;
+    background-color: $img_backdrop;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    // big img
+    .bigImg {
+      width: 231px;
+      height: auto;
+    }
+  }
+}
+
+// small imges container
+.small-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 400px;
+  // ALL small images
+  .smallImgLeftBox,
+  .smallImgCenterBox,
+  .smallImgRightBox {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    background-color: $img_backdrop;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// höger kolumn
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+// text Container
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  margin: 5rem;
+  h2,
+  p {
+    margin-left: -5rem;
+  }
+}
+// textinformation style
+.productContainer p strong {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 3rem;
+}
+
+.productContainer p .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  line-height: 1.2;
+  margin-top: 0.3rem;
+}
+// container inputfält + icon varukorg
+.quantityContainer {
+  display: flex;
+  margin-top: -33px;
+  // input #id
+  #quantityProducts {
+    height: 50px;
+    width: 14rem;
+    background-color: $img_backdrop;
+    border: none;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.quantityContainer > .cartbtn {
+  height: 50px;
+}
+
+// close button
+
+.closeButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: $bg_color;
+  border: none;
+  color: black;
+  font-size: 20px;
+}
+
+//arrows
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
+  height: 30px;
+}

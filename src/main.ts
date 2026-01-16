@@ -6,6 +6,8 @@ import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 
+//import { productInfo } from "./productInfo/productDetails";
+
 //Cookie
 cookiePopUp();
 
@@ -104,7 +106,7 @@ function renderCart() {
   if (cart.length === 0) {
     p.textContent = "Din varukorg är tom";
     list.innerHTML = "";
-    totalSumCart.textContent = ""
+    totalSumCart.textContent = "";
     const checkoutBtn = drawer.querySelector(".checkout-btn");
     checkoutBtn?.remove();
     const clearBtn = drawer.querySelector(".clear-btn");
@@ -145,9 +147,7 @@ function renderCart() {
   totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
-  let checkoutBtn = drawer.querySelector(
-    ".checkout-btn"
-  ) as HTMLButtonElement | null;
+  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
 
   if (!checkoutBtn) {
     checkoutBtn = document.createElement("button");
@@ -173,7 +173,7 @@ function renderCart() {
 }
 
 // rendera varukorgen på shop-sidan
-function checkoutCart () {
+function checkoutCart() {
   const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
   const sumCart = document.querySelector(".sum") as HTMLElement | null;
 
@@ -181,7 +181,7 @@ function checkoutCart () {
 
   if (cart.length === 0) {
     basket.textContent = "Din varukorg är tom.";
-    sumCart.textContent = "Summa: 0 kr"
+    sumCart.textContent = "Summa: 0 kr";
     return;
   }
   basket.innerHTML = "";
@@ -190,7 +190,7 @@ function checkoutCart () {
   cart.forEach((item) => {
     const unitPrice = stackPrice(item.product.price);
     const itemTotal = unitPrice * item.quantity;
-    totalSum +=itemTotal;
+    totalSum += itemTotal;
 
     const row = document.createElement("div");
     row.className = "checkout-item";
@@ -217,11 +217,7 @@ function openDrawer() {
 
 //lägger till i varukorgen +ökar om det är fler av samma
 function addToCart(product: Product) {
-  const existing = cart.find(
-    (item) =>
-      item.product.title === product.title &&
-      item.product.weight === product.weight
-  );
+  const existing = cart.find((item) => item.product.title === product.title && item.product.weight === product.weight);
 
   if (existing) {
     existing.quantity += 1;
