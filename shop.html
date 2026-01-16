@@ -8,93 +8,93 @@
     <link rel="stylesheet" href="/src/style.scss" />
   </head>
   <body>
-    <header class="header">
+    <header class="header" id="header">
       <nav class="nav">
-        <a href="/" class="header-logo">
-          <img src="/img/CoffeeLogo.svg" alt="" />
-        </a>
+       <a href="index.html" class="logo-link logo-div"></a>
+        <div class="search-div">
+          <form id="searchForm" class="search" role="search">
+            <input id="searchInput" type="search" placeholder="Sök efter produkt" />
 
-        <form class="search" role="search">
-          <input type="search" placeholder="Sök efter produkt" />
-
-          <button type="submit">
-            <img src="/img/zoom-out.svg" alt="" />
-          </button>
-        </form>
-
-        <a href="/" class="cart">
-          <img src="/img/bag.svg" alt="" />
-        </a>
+            <button class="searchBtn" type="submit">
+              <img src="/img/zoom-out.svg" alt="" />
+            </button>
+            <div class="search-overlay" id="searchOverlay"></div>
+            <div id="searchContainer" class="module">
+              <div id="searchResult" class="searchContainer"></div>
+            </div>
+          </form>
+        </div>
+        <div class="bag-div">
+          <a href="/" class="cart">
+            <img src="/img/bag.svg" alt="" />
+          </a>
+        </div>
       </nav>
     </header>
 
     <div class="overlay" id="cartOverlay">
       <aside class="drawer">
-        <button class="close" type="button">X</button>
+        <button class="close" type="button">✕</button>
         <h2>Varukorg</h2>
         <p>Din varukorg är tom</p>
       </aside>
     </div>
     <div id="app">
       <section class="shop">
+        <div class="buy">
+          <h1>Slutför ditt köp</h1>
+          <div class="basket">
+            <h2>Varukorg:</h2>
+            <div class="basket-display">Varor här, varukorgslistans HTML loopas fram i JS</div>
+            <h2 class="sum">Summa: Varornas kombinerade pris visas här</h2>
+          </div>
 
-            <div class="buy">
-                <h1>Slutför ditt köp</h1>
+          <div class="form">
+            <h3>Leveransadress:</h3>
+            <div class="delivery">
+              <form action="#" class="contact" id="buyform">
+                <label for="fname">Förnamn:</label>
+                <input type="text" id="fname" name="fname" />
+                <label for="lname">Efternamn:</label>
+                <input type="text" id="lname" name="lname" />
 
-                  <div class="basket">
-                    <h2>Varukorg:</h2>
-                    <div class="basket-display">Varor här, varukorgslistans HTML loopas fram i JS</div>
-                    <h2 class="sum">Summa: Varornas kombinerade pris visas här</h2>
+                <label for="addess">Gatuadress:</label>
+                <input type="text" id="address" name="address" />
+
+                <label for="postcode">Postnummer:</label>
+                <input type="text" id="postcode" name="postcode" />
+                <label for="city">Stad:</label>
+                <input type="text" id="city" name="city" />
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" />
+                <label for="phone">Telefonnummer:</label>
+                <input type="text" id="phone" name="phone" />
+
+                <div class="payment">
+                  <h3>Betalmetod:</h3>
+                  <div class="payment-method">
+                    <input type="radio" id="klarna" name="payment_method" value="klarna" class="clickable" />
+                    <label for="klarna"><img src="/klarna.png" class="payment-img clickable" alt="Klarna" /></label>
                   </div>
-
-                  <div class="form">
-
-                    <h3>Leveransadress:</h3>
-                    
-                    
-                        <div class="delivery">
-                          <form action="#" class="contact">
-                          <label for="fname">Förnamn:</label>
-                          <input type="text" id="fname" name="fname">
-                          <label for="lname">Efternamn:</label>
-                          <input type="text" id="lname" name="lname">
-
-                          <label for="addess">Gatuadress:</label>
-                          <input type="text" id="address" name="address">
-
-                          <label for="postcode">Postnummer:</label>
-                          <input type="text" id="postcode" name="postcode">
-                          <label for="city">Stad:</label>
-                          <input type="text" id="city" name="city">
-
-                          <label for="email">Email:</label>
-                          <input type="text" id="email" name="email">
-                          <label for="phone">Telefonnummer:</label>
-                          <input type="text" id="phone" name="phone">
-                        </div>
-
-                          <h3>Betalmetod:</h3>
-                          
-                          <div class="payment">
-                            <div class="payment-method">
-                              <input type="radio" id="klarna" name="payment_method" value="klarna" class="clickable">
-                              <label for="klarna"><img src="/klarna.png" class="payment-img clickable" alt="Klarna"></label>
-                            </div>
-                            <div class="payment-method">
-                              <input type="radio" id="swish" name="payment_method" value="swish" class="clickable">
-                              <label for="swish"><img src="/swish.svg" class="payment-img clickable" alt="Swish"></label>
-                            </div>
-                            <div class="payment-method">
-                              <input type="radio" id="kort" name="payment_method" value="kort" class="clickable">
-                              <label for="kort" class="clickable">Kortbetalning</label>
-                            </div>
-                          </div>
-                    </div>  
-
-                <button type="submit" class="buybtn">Bekräfta köp</button>
-                    </form>
-                    <a href="/products.html" class="linkreset"><button class="keepshoppingbtn">Fortsätt shoppa</button></a>
+                  <div class="payment-method">
+                    <input type="radio" id="swish" name="payment_method" value="swish" class="clickable" />
+                    <label for="swish"><img src="/swish.svg" class="payment-img clickable" alt="Swish" /></label>
+                  </div>
+                  <div class="payment-method">
+                    <input type="radio" id="kort" name="payment_method" value="kort" class="clickable" />
+                    <label for="kort" class="clickable">Kortbetalning</label>
+                  </div>
+                </div>
+<div class="button-div">
+                <a href="#header" class="buylink"><button type="button" class="buybtn" id="buybtn">Bekräfta köp</button></a>
+              </form>
+              <a href="index.html" class="linkreset"><button class="keepshoppingbtn" type="button">Fortsätt shoppa</button></a>
               </div>
+            </div>
+          </div>
+        </div>
+        <dialog class="modal" id="modal"></dialog>
       </section>
 
       <footer>

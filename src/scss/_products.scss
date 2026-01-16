@@ -75,7 +75,8 @@
   align-items: center;
   cursor: pointer;
   border: none;
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: $box-shadow;
+  transition: $transition;
 
   .cartimg {
     width: 38px;
@@ -84,7 +85,7 @@
 
   &:hover {
     background-color: $primary_button_hover;
-    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: $box-shadow, $inset;
   }
 }
 
@@ -98,13 +99,15 @@
   align-items: center;
   border: none;
   border-radius: 50px;
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: $box-shadow;
+  transition: $transition;
   cursor: pointer;
+  margin-bottom: $margin-xlg;
 
   &:hover {
     background-color: $primary_button_hover;
-    color: white;
-    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: $bg_color;
+    box-shadow: $box-shadow, $inset;
   }
 }
 

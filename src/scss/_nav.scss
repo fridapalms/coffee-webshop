@@ -1,7 +1,4 @@
 @use "variables" as *;
-
-$header-height: 100px;
-$header-bg: #2d221e;
 $radius: 10px;
 
 *::before,
@@ -9,14 +6,8 @@ $radius: 10px;
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .header {
-  background-color: $header-bg;
+  background-color: $primary;
   height: $header-height;
   width: 100%;
   display: flex;
@@ -27,26 +18,36 @@ body {
   width: 100%;
   height: 100%;
   padding: 0 24px;
-
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
 }
 
-.header-logo {
-  display: block;
+.logo-div {
+  width: 20%;
+  background-image: url("/img/CoffeeLogo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 38px;
+}
 
-  img {
-    height: 38px;
-    display: block;
-  }
+.logo-link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.search-div {
+  width: 50%;
 }
 
 .search {
   margin: 0;
   justify-self: center;
-  width: 320px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 320px;
   position: relative;
 }
 
@@ -57,15 +58,21 @@ body {
   border-radius: $radius;
   border: none;
   outline: none;
-  background: #f4ede2;
-  color: $header-bg;
+  background: $bg_color;
+  color: $primary;
+  opacity: 50%;
+
+  &:hover,
+  &:focus {
+    opacity: 70%;
+  }
 
   &::placeholder {
-    color: $header-bg;
+    color: $primary;
   }
 }
 
-.search button {
+.searchBtn {
   position: absolute;
   right: 12px;
   top: 50%;
@@ -84,6 +91,10 @@ body {
   display: block;
 }
 
+.bag-div {
+  width: 20%;
+}
+
 .cart {
   justify-self: end;
   width: 40px;
@@ -94,5 +105,11 @@ body {
   img {
     height: 26px;
     display: block;
+  }
+}
+
+@media (max-width: 950px) {
+  .logo-div {
+    background-image: url("/CoffeeLogo-small.svg");
   }
 }

@@ -10,27 +10,31 @@
   <body>
     <header class="header">
       <nav class="nav">
-        <a href="/" class="header-logo">
-          <img src="/img/CoffeeLogo.svg" alt="" />
-        </a>
+        <a href="index.html" class="logo-link logo-div"></a>
+        <div class="search-div">
+          <form id="searchForm" class="search" role="search">
+            <input id="searchInput" type="search" placeholder="Sök efter produkt" />
 
-        <form class="search" role="search">
-          <input type="search" placeholder="Sök efter produkt" />
-
-          <button type="submit">
-            <img src="/img/zoom-out.svg" alt="" />
-          </button>
-        </form>
-
-        <a href="/" class="cart">
-          <img src="/img/bag.svg" alt="" />
-        </a>
+            <button class="searchBtn" type="submit">
+              <img src="/img/zoom-out.svg" alt="" />
+            </button>
+            <div class="search-overlay" id="searchOverlay"></div>
+            <div id="searchContainer" class="module">
+              <div id="searchResult" class="searchContainer"></div>
+            </div>
+          </form>
+        </div>
+        <div class="bag-div">
+          <a href="/" class="cart">
+            <img src="/img/bag.svg" alt="" />
+          </a>
+        </div>
       </nav>
     </header>
 
     <div class="overlay" id="cartOverlay">
       <aside class="drawer">
-        <button class="close" type="button">X</button>
+        <button class="close" type="button">✕</button>
         <h2>Varukorg</h2>
         <p>Din varukorg är tom</p>
       </aside>

@@ -1,0 +1,44 @@
+@use "variables" as *;
+
+.checkout-btn {
+  margin-top: $margin-lg;
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: $primary_button_bg;
+  color: $primary;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: $transition;
+  box-shadow: $box-shadow;
+}
+
+.checkout-btn:hover {
+  background-color: $primary_button_hover;
+  color: $bg_color;
+  transform: translateY(-1px);
+  box-shadow: $box-shadow, $inset;
+}
+
+.clear-btn {
+  background-color: $secondary_button_bg;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 1rem 2rem;
+  color: $primary;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: $transition;
+  box-shadow: $box-shadow;
+}
+
+.clear-btn:hover {
+  background-color: $secondary_button_hover;
+  color: $bg_color;
+  box-shadow: $box-shadow, $inset;
+}
