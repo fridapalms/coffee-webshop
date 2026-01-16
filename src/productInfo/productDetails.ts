@@ -1,20 +1,5 @@
-import { products } from "../heroSection/hero";
+//import { products } from "../heroSection/hero";
 import type { Product } from "../models/Product";
-
-const imgDivs = document.getElementsByClassName("imgdiv");
-const textDivs = document.getElementsByClassName("textdiv");
-const productContent = products;
-
-for (let i = 0; i < productContent.length; i++) {
-  const product = productContent[i];
-
-  (textDivs[i] as HTMLElement).addEventListener("click", () => {
-    productInfo(product);
-  });
-  (imgDivs[i] as HTMLElement).addEventListener("click", () => {
-    productInfo(product);
-  });
-}
 
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
   //------------------------------------------------------
