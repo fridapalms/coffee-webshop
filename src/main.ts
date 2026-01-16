@@ -6,7 +6,7 @@ import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 
-import { productInfo } from "./productInfo/productDetails";
+//import { productInfo } from "./productInfo/productDetails";
 
 //Cookie
 cookiePopUp();
