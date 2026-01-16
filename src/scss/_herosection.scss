@@ -117,3 +117,9 @@
     }
   }
 }
+
+@media screen and (max-width: $tablet_breakpoint) {
+  #products {
+    width: 80%;
+  }
+}
