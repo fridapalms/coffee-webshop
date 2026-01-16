@@ -11,8 +11,11 @@ for (let i = 0; i < productContent.length; i++) {
   (textDivs[i] as HTMLElement).addEventListener("click", () => {
     productInfo(product);
   });
+  (imgDivs[i] as HTMLElement).addEventListener("click", () => {
+    productInfo(product);
+  });
 }
-//------
+
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
   //------------------------------------------------------
 
