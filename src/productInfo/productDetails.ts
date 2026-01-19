@@ -2,9 +2,8 @@
 import type { Product } from "../models/Product";
 
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
-  //------------------------------------------------------
+  if (document.querySelector(".productPage")) return;
 
-  //export function productInfo(product: Product) {
   const productimg = [
     {
       num3: "/public/extra3.png",
@@ -46,6 +45,7 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
   const textContainer = document.createElement("div");
 
   bigImgBox.innerHTML = "";
+  //
 
   bigImg.src = product.heroimage;
   leftImg.src = productimg[0].num1; //------------------
