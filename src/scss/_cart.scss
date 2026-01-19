@@ -89,3 +89,35 @@
   height: 75px;
   object-fit: cover;
 }
+
+.plus-Btn {
+  background-color: $primary_button_bg;
+  margin-left: 8px;
+}
+
+.plus-Btn:hover {
+  background-color: $primary_button_hover;
+}
+
+.minus-Btn {
+  margin-right: 8px;
+  background-color: $secondary_button_bg;
+}
+
+.minus-Btn:hover {
+  background-color: $secondary_button_hover;
+}
+
+.item-Quantity {
+  min-width: 20px;
+  text-align: center;
+}
+
+.titel-checkout {
+  margin-bottom: 20px;
+}
+
+.checkout-item {
+  display: flex;
+  gap: 30px;
+}
