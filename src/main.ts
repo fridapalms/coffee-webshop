@@ -69,6 +69,31 @@ function clearCart() {
   checkoutCart();
 }
 
+// Öka/minska antal i varukorgen/kassan
+function plusCart(index: number): void {
+  if (index < 0) return;
+  if (index >= cart.length) return;
+
+  cart[index].quantity = cart[index].quantity +1;
+  cartLocalStorage();
+  renderCart();
+  checkoutCart();
+}
+
+function minusCart (index: number): void {
+  if (index < 0) return;
+  if (index >= cart.length) return;
+
+  cart[index].quantity = cart[index].quantity -1;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+  cartLocalStorage();
+  renderCart();
+  checkoutCart();
+}
+
 // uppdaterar innehållet i varukorgen
 function renderCart() {
   const drawer = document.querySelector(".drawer") as HTMLElement | null;
@@ -120,13 +145,43 @@ function renderCart() {
     img.src = item.product.heroimage;
     img.alt = item.product.title;
 
-    // Totalpris kassan
+    // Totalpris varukorgen
     const text = document.createElement("div");
     text.className = "cart-item-text";
     const unitPrice = stackPrice(item.product.price);
     const totalPrice = unitPrice * item.quantity;
     cartTotal += totalPrice;
-    text.textContent = `${item.product.title} x${item.quantity} (${totalPrice} kr)`;
+
+    // minus plus knapp - Varukorgen
+    const titel = document.createElement("div");
+    titel.textContent = `${item.product.title} (${totalPrice} kr)`;
+
+    // minus knapp 
+    const controls = document.createElement("div");
+    const minusBtn = document.createElement("button");
+    minusBtn.className = "minus-Btn";
+    minusBtn.textContent = "-";
+    minusBtn.addEventListener("click", () =>{
+      minusCart(i);
+    });
+
+    const itemQuantity = document.createElement("span");
+    itemQuantity.className = "item-Quantity";
+    itemQuantity.textContent = String(item.quantity);
+
+    // plus knapp
+    const plusBtn = document.createElement("button");
+    plusBtn.className = "plus-Btn"
+    plusBtn.textContent = "+";
+    plusBtn.addEventListener("click", () => {
+      plusCart(i);
+    });
+
+    controls.appendChild(minusBtn);
+    controls.appendChild(itemQuantity);
+    controls.appendChild(plusBtn);
+    text.appendChild(titel);
+    text.appendChild(controls);
 
     row.appendChild(img);
     row.appendChild(text);
@@ -176,7 +231,7 @@ function checkoutCart() {
   basket.innerHTML = "";
   let totalSum = 0;
 
-  cart.forEach((item) => {
+  cart.forEach((item, i) => {
     const unitPrice = stackPrice(item.product.price);
     const itemTotal = unitPrice * item.quantity;
     totalSum += itemTotal;
@@ -190,8 +245,38 @@ function checkoutCart() {
     img.className = "checkout-item-image";
     row.appendChild(img);
 
+    // minus plus knapp - Kassan
+    const titel = document.createElement("div");
+    titel.className = "titel-checkout";
+    titel.textContent = `${item.product.title} (${item.product.weight}) - ${itemTotal} kr`;
+
+    // minus knapp
     const text = document.createElement("div");
-    text.textContent = `${item.product.title} (${item.product.weight}) x${item.quantity} - ${itemTotal} kr`;
+    const controls = document.createElement("div");
+    const minusBtn = document.createElement("button");
+    minusBtn.className = "minus-Btn";
+    minusBtn.textContent = "-";
+    minusBtn.addEventListener("click", () =>{
+      minusCart(i);
+    });
+
+    const itemQuantity = document.createElement("span");
+    itemQuantity.className = "item-Quantity";
+    itemQuantity.textContent = String(item.quantity);
+
+    // plus knapp
+    const plusBtn = document.createElement("button");
+    plusBtn.className = "plus-Btn"
+    plusBtn.textContent = "+";
+    plusBtn.addEventListener("click", () => {
+      plusCart(i);
+    });
+
+    controls.appendChild(minusBtn);
+    controls.appendChild(itemQuantity);
+    controls.appendChild(plusBtn);
+    text.appendChild(titel);
+    text.appendChild(controls);
     row.appendChild(text);
     basket.appendChild(row);
   });
