@@ -2,9 +2,6 @@
 import type { Product } from "../models/Product";
 
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
-  //------------------------------------------------------
-
-  //export function productInfo(product: Product) {
   const productimg = [
     {
       num3: "/public/extra3.png",
@@ -48,9 +45,9 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
   bigImgBox.innerHTML = "";
 
   bigImg.src = product.heroimage;
-  leftImg.src = productimg[0].num1; //------------------
-  rightImg.src = productimg[0].num2; //------------------
-  centerImg.src = productimg[0].num3; //-------------------
+  leftImg.src = productimg[0].num1;
+  rightImg.src = productimg[0].num2;
+  centerImg.src = productimg[0].num3;
   carts.src = product.carticon;
 
   cartButton.addEventListener("click", (e) => {
