@@ -1,3 +1,4 @@
+import { products } from "./heroSection/hero";
 import { Product } from "./models/Product";
 import { productInfo } from "./productInfo/productDetails";
 
