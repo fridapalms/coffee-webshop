@@ -1,10 +1,11 @@
-import { createHtml } from "./htmlUtils";
+import { createHtml } from "./Utils/htmlUtils";
 import { Product } from "./models/Product";
 import "./scss/style.scss";
 import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
+import { stackPrice } from "./Utils/stackPrice";
 
 //import { productInfo } from "./productInfo/productDetails";
 
@@ -46,7 +47,18 @@ function loadCartLocalStorage() {
     cart.length = 0;
 
     storedCartItems.forEach((item) => {
-      const product = new Product(item.product.title, item.product.weight, item.product.info, item.product.price, item.product.heroimage, item.product.secondimage, item.product.thirdimage, item.product.fourthimage, item.product.carticon, item.product.productlink);
+      const product = new Product(
+        item.product.title,
+        item.product.weight,
+        item.product.info,
+        item.product.price,
+        item.product.heroimage,
+        item.product.secondimage,
+        item.product.thirdimage,
+        item.product.fourthimage,
+        item.product.carticon,
+        item.product.productlink,
+      );
 
       cart.push({ product, quantity: item.quantity });
     });
@@ -57,9 +69,9 @@ function loadCartLocalStorage() {
 
 loadCartLocalStorage();
 
-function stackPrice(price: string): number {
-  return Number(price.replace("kr", ""));
-}
+// function stackPrice(price: string): number {
+//   return Number(price.replace("kr", ""));
+// }
 
 // Tömmer varukorgen
 function clearCart() {
@@ -74,17 +86,17 @@ function plusCart(index: number): void {
   if (index < 0) return;
   if (index >= cart.length) return;
 
-  cart[index].quantity = cart[index].quantity +1;
+  cart[index].quantity = cart[index].quantity + 1;
   cartLocalStorage();
   renderCart();
   checkoutCart();
 }
 
-function minusCart (index: number): void {
+function minusCart(index: number): void {
   if (index < 0) return;
   if (index >= cart.length) return;
 
-  cart[index].quantity = cart[index].quantity -1;
+  cart[index].quantity = cart[index].quantity - 1;
 
   if (cart[index].quantity <= 0) {
     cart.splice(index, 1);
@@ -109,7 +121,9 @@ function renderCart() {
   }
 
   // Totalpris varukorgen
-  let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
+  let totalSumCart = drawer.querySelector(
+    ".cart-total",
+  ) as HTMLDivElement | null;
   if (!totalSumCart) {
     totalSumCart = document.createElement("div");
     totalSumCart.className = "cart-total";
@@ -156,12 +170,12 @@ function renderCart() {
     const titel = document.createElement("div");
     titel.textContent = `${item.product.title} (${totalPrice} kr)`;
 
-    // minus knapp 
+    // minus knapp
     const controls = document.createElement("div");
     const minusBtn = document.createElement("button");
     minusBtn.className = "minus-Btn";
     minusBtn.textContent = "-";
-    minusBtn.addEventListener("click", () =>{
+    minusBtn.addEventListener("click", () => {
       minusCart(i);
     });
 
@@ -171,7 +185,7 @@ function renderCart() {
 
     // plus knapp
     const plusBtn = document.createElement("button");
-    plusBtn.className = "plus-Btn"
+    plusBtn.className = "plus-Btn";
     plusBtn.textContent = "+";
     plusBtn.addEventListener("click", () => {
       plusCart(i);
@@ -191,7 +205,9 @@ function renderCart() {
   totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
-  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
+  let checkoutBtn = drawer.querySelector(
+    ".checkout-btn",
+  ) as HTMLButtonElement | null;
 
   if (!checkoutBtn) {
     checkoutBtn = document.createElement("button");
@@ -218,7 +234,9 @@ function renderCart() {
 
 // rendera varukorgen på shop-sidan
 function checkoutCart() {
-  const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
+  const basket = document.querySelector(
+    ".basket-display",
+  ) as HTMLDivElement | null;
   const sumCart = document.querySelector(".sum") as HTMLElement | null;
 
   if (!basket || !sumCart) return;
@@ -256,7 +274,7 @@ function checkoutCart() {
     const minusBtn = document.createElement("button");
     minusBtn.className = "minus-Btn";
     minusBtn.textContent = "-";
-    minusBtn.addEventListener("click", () =>{
+    minusBtn.addEventListener("click", () => {
       minusCart(i);
     });
 
@@ -266,7 +284,7 @@ function checkoutCart() {
 
     // plus knapp
     const plusBtn = document.createElement("button");
-    plusBtn.className = "plus-Btn"
+    plusBtn.className = "plus-Btn";
     plusBtn.textContent = "+";
     plusBtn.addEventListener("click", () => {
       plusCart(i);
@@ -291,7 +309,11 @@ function openDrawer() {
 
 //lägger till i varukorgen +ökar om det är fler av samma
 function addToCart(product: Product) {
-  const existing = cart.find((item) => item.product.title === product.title && item.product.weight === product.weight);
+  const existing = cart.find(
+    (item) =>
+      item.product.title === product.title &&
+      item.product.weight === product.weight,
+  );
 
   if (existing) {
     existing.quantity += 1;
@@ -306,21 +328,166 @@ function addToCart(product: Product) {
 //-------  products.html - start -------
 //
 //Skapar alla de 12 produkterna
-const product1: Product = new Product("Kaffepetters", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "299kr", "/hero2.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product2: Product = new Product("Kaffekonrads", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "199kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product3: Product = new Product("Koffebroderns", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "229kr", "/hero4.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product4: Product = new Product("Kaffekonrads", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "399kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product5: Product = new Product("Karlssons", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "249kr", "/hero3.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product6: Product = new Product("Kaffebönan", "250g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "199kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product7: Product = new Product("Kaffepetters", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "589kr", "/hero2.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product8: Product = new Product("Kaffebönan", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "399kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product9: Product = new Product("Koffebroderns", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "429kr", "/hero4.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product10: Product = new Product("Kaffebönan", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "399kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product11: Product = new Product("Karlssons", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "499kr", "/hero3.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
-const product12: Product = new Product("Kaffebönan", "500g", "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.", "399kr", "/hero1.png", "/extra1.png", "/extra2.png", "/extra3.png", "/cart.svg", "#");
+const product1: Product = new Product(
+  "Kaffepetters",
+  "250g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "299kr",
+  "/hero2.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product2: Product = new Product(
+  "Kaffekonrads",
+  "250g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "199kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product3: Product = new Product(
+  "Koffebroderns",
+  "250g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "229kr",
+  "/hero4.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product4: Product = new Product(
+  "Kaffekonrads",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "399kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product5: Product = new Product(
+  "Karlssons",
+  "250g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "249kr",
+  "/hero3.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product6: Product = new Product(
+  "Kaffebönan",
+  "250g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "199kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product7: Product = new Product(
+  "Kaffepetters",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "589kr",
+  "/hero2.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product8: Product = new Product(
+  "Kaffebönan",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "399kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product9: Product = new Product(
+  "Koffebroderns",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "429kr",
+  "/hero4.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product10: Product = new Product(
+  "Kaffebönan",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "399kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product11: Product = new Product(
+  "Karlssons",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "499kr",
+  "/hero3.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
+const product12: Product = new Product(
+  "Kaffebönan",
+  "500g",
+  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
+  "399kr",
+  "/hero1.png",
+  "/extra1.png",
+  "/extra2.png",
+  "/extra3.png",
+  "/cart.svg",
+  "#",
+);
 
 //Listan med alla 12 produkter
-const allproducts: Product[] = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12];
+const allproducts: Product[] = [
+  product1,
+  product2,
+  product3,
+  product4,
+  product5,
+  product6,
+  product7,
+  product8,
+  product9,
+  product10,
+  product11,
+  product12,
+];
 
 //skapar en lista med 4 produkter utifrån allproducts
 //loopar igenom listan skapar html för produkterna i nya listan
@@ -393,7 +560,8 @@ buybtn?.addEventListener("click", async () => {
     modaldiv.className = "modaldiv";
     const confirmation = document.createElement("p");
     confirmation.className = "confirmation";
-    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
+    confirmation.innerHTML =
+      "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
     const indexlink = document.createElement("a");
     indexlink.href = "index.html";
     indexlink.className = "linkreset";
