@@ -1,7 +1,5 @@
-import { products } from "./heroSection/hero";
-import { Product } from "./models/Product";
-import { productInfo } from "./productInfo/productDetails";
-import { showResult } from "./Utils/showResult";
+import { Product } from "../models/Product";
+import { productInfo } from "../productInfo/productDetails";
 
 //Funktion createHtml
 export const createHtml = (product: Product, onAddToCart: (p: Product) => void) => {

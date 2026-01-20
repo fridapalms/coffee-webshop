@@ -1,10 +1,11 @@
-import { createHtml } from "./htmlUtils";
+import { createHtml } from "./Utils/htmlUtils";
 import { Product } from "./models/Product";
 import "./scss/style.scss";
-import "./scss/_products.scss";
 import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
+import { stackPrice } from "./Utils/stackPrice";
+import { cart, cartLocalStorage, loadCartLocalStorage } from "./Utils/cartStorage";
 
 //Cookie
 cookiePopUp();
@@ -65,10 +66,6 @@ function loadCartLocalStorage() {
 }
 
 loadCartLocalStorage();
-
-function stackPrice(price: string): number {
-  return Number(price.replace("kr", ""));
-}
 
 // Tömmer varukorgen
 function clearCart() {
