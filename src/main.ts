@@ -612,11 +612,9 @@ document.getElementById("searchForm")?.addEventListener("submit", (e) => {
     if (product.title.toLowerCase().includes(search.toLowerCase())) {
       found = true;
       showResult(product, addToCart);
-      console.log(product);
     }
   });
   if (!found) {
     searchNotFound();
-    console.log("ERRRORORORO!");
   }
 });
