@@ -5,15 +5,65 @@ import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 import { stackPrice } from "./Utils/stackPrice";
-import {
-  cart,
-  cartLocalStorage,
-  loadCartLocalStorage,
-} from "./Utils/cartStorage";
+//import { cart, cartLocalStorage, loadCartLocalStorage } from "./Utils/cartStorage";
 
-//import { productInfo } from "./productInfo/productDetails";
-
+//Cookie
 cookiePopUp();
+
+// Sparar produkt och antal i varukorgen
+type cartItem = { product: Product; quantity: number };
+const cart: cartItem[] = [];
+
+// localstorage
+const CART_KEY = "cart";
+
+function cartLocalStorage() {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function loadCartLocalStorage() {
+  const storedCart = localStorage.getItem(CART_KEY);
+  if (!storedCart) return;
+
+  try {
+    const storedCartItems = JSON.parse(storedCart) as Array<{
+      product: {
+        title: string;
+        weight: string;
+        info: string;
+        price: string;
+        heroimage: string;
+        secondimage: string;
+        thirdimage: string;
+        fourthimage: string;
+        carticon: string;
+        productlink: string;
+      };
+      quantity: number;
+    }>;
+
+    cart.length = 0;
+
+    storedCartItems.forEach((item) => {
+      const product = new Product(
+        item.product.title,
+        item.product.weight,
+        item.product.info,
+        item.product.price,
+        item.product.heroimage,
+        item.product.secondimage,
+        item.product.thirdimage,
+        item.product.fourthimage,
+        item.product.carticon,
+        item.product.productlink
+      );
+
+      cart.push({ product, quantity: item.quantity });
+    });
+  } catch {
+    localStorage.removeItem(CART_KEY);
+  }
+}
 
 loadCartLocalStorage();
 
@@ -65,9 +115,7 @@ function renderCart() {
   }
 
   // Totalpris varukorgen
-  let totalSumCart = drawer.querySelector(
-    ".cart-total",
-  ) as HTMLDivElement | null;
+  let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
   if (!totalSumCart) {
     totalSumCart = document.createElement("div");
     totalSumCart.className = "cart-total";
@@ -149,9 +197,7 @@ function renderCart() {
   totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
-  let checkoutBtn = drawer.querySelector(
-    ".checkout-btn",
-  ) as HTMLButtonElement | null;
+  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
 
   if (!checkoutBtn) {
     checkoutBtn = document.createElement("button");
@@ -178,9 +224,7 @@ function renderCart() {
 
 // rendera varukorgen på shop-sidan
 function checkoutCart() {
-  const basket = document.querySelector(
-    ".basket-display",
-  ) as HTMLDivElement | null;
+  const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
   const sumCart = document.querySelector(".sum") as HTMLElement | null;
 
   if (!basket || !sumCart) return;
@@ -253,11 +297,7 @@ function openDrawer() {
 
 //lägger till i varukorgen +ökar om det är fler av samma
 function addToCart(product: Product) {
-  const existing = cart.find(
-    (item) =>
-      item.product.title === product.title &&
-      item.product.weight === product.weight,
-  );
+  const existing = cart.find((item) => item.product.title === product.title && item.product.weight === product.weight);
 
   if (existing) {
     existing.quantity += 1;
@@ -282,7 +322,7 @@ const product1: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product2: Product = new Product(
   "Kaffekonrads",
@@ -294,7 +334,7 @@ const product2: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product3: Product = new Product(
   "Koffebroderns",
@@ -306,7 +346,7 @@ const product3: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product4: Product = new Product(
   "Kaffekonrads",
@@ -318,7 +358,7 @@ const product4: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product5: Product = new Product(
   "Karlssons",
@@ -330,7 +370,7 @@ const product5: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product6: Product = new Product(
   "Kaffebönan",
@@ -342,7 +382,7 @@ const product6: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product7: Product = new Product(
   "Kaffepetters",
@@ -354,7 +394,7 @@ const product7: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product8: Product = new Product(
   "Kaffebönan",
@@ -366,7 +406,7 @@ const product8: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product9: Product = new Product(
   "Koffebroderns",
@@ -378,7 +418,7 @@ const product9: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product10: Product = new Product(
   "Kaffebönan",
@@ -390,7 +430,7 @@ const product10: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product11: Product = new Product(
   "Karlssons",
@@ -402,7 +442,7 @@ const product11: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 const product12: Product = new Product(
   "Kaffebönan",
@@ -414,7 +454,7 @@ const product12: Product = new Product(
   "/extra2.png",
   "/extra3.png",
   "/cart.svg",
-  "#",
+  "#"
 );
 
 //Listan med alla 12 produkter

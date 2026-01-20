@@ -1,4 +1,5 @@
 import type { Product } from "../models/Product";
+import { productInfo } from "../productInfo/productDetails";
 
 export const products = (product: Product, addToCart: (p: Product) => void) => {
   const container = document.getElementById("products");
@@ -25,8 +26,8 @@ export const products = (product: Product, addToCart: (p: Product) => void) => {
   icon.alt = "cartImg";
   icon.className = "icon";
 
-  const productInfo = document.createElement("div");
-  productInfo.className = "productInfo";
+  const productInfodiv = document.createElement("div");
+  productInfodiv.className = "productInfo";
 
   const productTitle = document.createElement("p");
   productTitle.className = "coffeeTitle";
@@ -37,11 +38,15 @@ export const products = (product: Product, addToCart: (p: Product) => void) => {
   productPrice.className = "coffeePrice";
   productPrice.textContent = product.price;
 
-  cartBtn.appendChild(icon);
-  productInfo.appendChild(productTitle);
-  productInfo.appendChild(productPrice);
+  card.addEventListener("click", () => {
+    productInfo(product, addToCart);
+  });
 
-  infoContainer.appendChild(productInfo);
+  cartBtn.appendChild(icon);
+  productInfodiv.appendChild(productTitle);
+  productInfodiv.appendChild(productPrice);
+
+  infoContainer.appendChild(productInfodiv);
   infoContainer.appendChild(cartBtn);
 
   card.appendChild(img);
