@@ -65,6 +65,19 @@
   overflow-y: auto;
   padding-right: 8px;
   min-height: 0;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
+  }
 }
 
 .cart-item {
