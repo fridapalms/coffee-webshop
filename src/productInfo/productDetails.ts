@@ -47,9 +47,9 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
   //
 
   bigImg.src = product.heroimage;
-  leftImg.src = productimg[0].num1; //------------------
-  rightImg.src = productimg[0].num2; //------------------
-  centerImg.src = productimg[0].num3; //-------------------
+  leftImg.src = productimg[0].num1;
+  rightImg.src = productimg[0].num2;
+  centerImg.src = productimg[0].num3;
   carts.src = product.carticon;
 
   cartButton.addEventListener("click", (e) => {

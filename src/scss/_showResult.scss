@@ -31,6 +31,21 @@
     align-items: center;
     gap: $padding-sm;
     padding: $padding-sm;
+    overflow-y: auto;
+    max-height: 90vh;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 999px;
+    }
 
     .coffeeCard {
       width: 100%;
