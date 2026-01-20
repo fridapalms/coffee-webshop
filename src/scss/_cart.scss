@@ -106,6 +106,11 @@
 .plus-Btn {
   background-color: $primary_button_bg;
   margin-left: 8px;
+  border: 1px solid $primary;
+  border-radius: 100%;
+  box-shadow: $box-shadow;
+  height: 20px;
+  width: 20px;
 }
 
 .plus-Btn:hover {
@@ -115,6 +120,11 @@
 .minus-Btn {
   margin-right: 8px;
   background-color: $secondary_button_bg;
+  border: 1px solid $primary;
+  border-radius: 100%;
+  box-shadow: $box-shadow;
+  height: 20px;
+  width: 20px;
 }
 
 .minus-Btn:hover {
