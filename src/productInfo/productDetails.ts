@@ -6,9 +6,9 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
 
   const productimg = [
     {
-      num3: "/public/extra3.png",
-      num2: "/public/extra2.png",
-      num1: "/public/extra1.png",
+      num3: "assets/images/extra3.png",
+      num2: "assets/images/extra2.png",
+      num1: "assets/images/extra1.png",
     },
   ];
 
