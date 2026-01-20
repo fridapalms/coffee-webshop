@@ -12,6 +12,10 @@ export const products = (product: Product, addToCart: (p: Product) => void) => {
   img.alt = "coffeImg";
   img.className = "productImg";
 
+  img.addEventListener("click", () => {
+    productInfo(product, addToCart);
+  });
+
   const infoContainer = document.createElement("div");
   infoContainer.className = "infoContainer";
 
@@ -34,13 +38,13 @@ export const products = (product: Product, addToCart: (p: Product) => void) => {
   productTitle.textContent = product.title;
   productTitle.style.whiteSpace = "pre-line";
 
+  productTitle.addEventListener("click", () => {
+    productInfo(product, addToCart);
+  });
+
   const productPrice = document.createElement("p");
   productPrice.className = "coffeePrice";
   productPrice.textContent = product.price;
-
-  card.addEventListener("click", () => {
-    productInfo(product, addToCart);
-  });
 
   cartBtn.appendChild(icon);
   productInfodiv.appendChild(productTitle);
