@@ -2,12 +2,13 @@
 import type { Product } from "../models/Product";
 
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
+  if (document.querySelector(".productPage")) return; //click once only on poppup.
+
   const productimg = [
     {
       num3: "/public/extra3.png",
       num2: "/public/extra2.png",
       num1: "/public/extra1.png",
-      //cart: "/public/img/vector.png",
     },
   ];
 
@@ -43,6 +44,7 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
   const textContainer = document.createElement("div");
 
   bigImgBox.innerHTML = "";
+  //
 
   bigImg.src = product.heroimage;
   leftImg.src = productimg[0].num1;

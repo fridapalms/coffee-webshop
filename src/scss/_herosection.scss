@@ -38,6 +38,7 @@
   height: 250px;
   background-color: $img_backdrop;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .infoContainer {
@@ -47,6 +48,7 @@
   justify-content: space-between;
   padding: $padding-sm;
   gap: 10px;
+  cursor: pointer;
 }
 
 .cartBtn {

@@ -1,9 +1,6 @@
 import type { Product } from "../models/Product";
 
-export const showResult = (
-  product: Product,
-  addToCart: (p: Product) => void
-) => {
+export const showResult = (product: Product, addToCart: (p: Product) => void) => {
   const searchContainer = document.getElementById("searchContainer");
 
   if (searchContainer) {
@@ -54,6 +51,14 @@ export const showResult = (
   coffeeCard.appendChild(cartBtn);
 
   module?.appendChild(coffeeCard);
+  //sökfältet clickinfo på produkter---------------------------------------
+  imgContainer?.addEventListener("click", () => {
+    addToCart(product);
+  });
+  infoContainer?.addEventListener("click", () => {
+    addToCart(product);
+  });
+  //---------------------------------------------------
 };
 
 export const searchNotFound = () => {
@@ -69,8 +74,7 @@ export const searchNotFound = () => {
   const errorMessage = document.createElement("p");
 
   errorMessage.className = "errorMessage";
-  errorMessage.innerHTML =
-    "Hoppsan! Vi kunde inte hitta något som matchar din sökning.";
+  errorMessage.innerHTML = "Hoppsan! Vi kunde inte hitta något som matchar din sökning.";
 
   module.appendChild(errorMessage);
 };
