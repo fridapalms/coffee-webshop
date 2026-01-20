@@ -44,6 +44,7 @@
 
       .imgContainer {
         width: 20%;
+        cursor: pointer;
 
         img {
           width: 100%;
@@ -55,6 +56,7 @@
       .detailsContainer {
         .title {
           text-transform: uppercase;
+          cursor: pointer;
         }
         .weight {
           font-style: italic;

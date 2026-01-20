@@ -1,11 +1,8 @@
 //import { products } from "../heroSection/hero";
 import type { Product } from "../models/Product";
 
-const imgContainer = document.querySelector("imgContainer");
-const detailsContainer = document.querySelector("detailsContainer");
-
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
-  if (document.querySelector(".productPage")) return; //click once only.
+  if (document.querySelector(".productPage")) return; //click once only on poppup.
 
   const productimg = [
     {
@@ -58,13 +55,6 @@ export function productInfo(product: Product, addToCart: (p: Product) => void) {
   cartButton.addEventListener("click", (e) => {
     e.stopPropagation();
     addToCart(product);
-  });
-
-  imgContainer?.addEventListener("click", () => {
-    addToCart(product); //?----------------------------------
-  });
-  detailsContainer?.addEventListener("click", () => {
-    addToCart(product); //?---------------------------------------
   });
 
   bigImg.alt = "coffeeImg";
