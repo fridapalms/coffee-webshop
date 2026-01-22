@@ -2,7 +2,7 @@ import { createHtml } from "./Utils/htmlUtils";
 import { Product } from "./models/Product";
 import "./scss/style.scss";
 import { cookiePopUp } from "./Utils/cooike";
-import { products } from "./heroSection/hero";
+import { products } from "./Utils/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 import { stackPrice } from "./Utils/stackPrice";
 //import { cart, cartLocalStorage, loadCartLocalStorage } from "./Utils/cartStorage";

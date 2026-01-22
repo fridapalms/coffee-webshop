@@ -1,5 +1,5 @@
 import type { Product } from "../models/Product";
-import { productInfo } from "../productInfo/productDetails";
+import { productInfo } from "./productDetails";
 
 export const showResult = (
   product: Product,

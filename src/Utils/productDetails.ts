@@ -1,4 +1,3 @@
-//import { products } from "../heroSection/hero";
 import type { Product } from "../models/Product";
 
 export function productInfo(product: Product, addToCart: (p: Product) => void) {
