@@ -16,3 +16,6 @@ const product12: Product = new Product("Kaffebönan", "500g", "En len och fyllig
 
 //Listan med alla 12 produkter
 export const allproducts: Product[] = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12];
+
+//skapar en lista med 4 produkter utifrån allproducts
+export const popularProducts = allproducts.slice(0, 4);

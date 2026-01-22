@@ -5,6 +5,7 @@ import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./heroSection/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 import { stackPrice } from "./Utils/stackPrice";
+import { allproducts, popularProducts } from "./data/productData";
 //import { cart, cartLocalStorage, loadCartLocalStorage } from "./Utils/cartStorage";
 
 //Cookie
@@ -45,18 +46,7 @@ function loadCartLocalStorage() {
     cart.length = 0;
 
     storedCartItems.forEach((item) => {
-      const product = new Product(
-        item.product.title,
-        item.product.weight,
-        item.product.info,
-        item.product.price,
-        item.product.heroimage,
-        item.product.secondimage,
-        item.product.thirdimage,
-        item.product.fourthimage,
-        item.product.carticon,
-        item.product.productlink,
-      );
+      const product = new Product(item.product.title, item.product.weight, item.product.info, item.product.price, item.product.heroimage, item.product.secondimage, item.product.thirdimage, item.product.fourthimage, item.product.carticon, item.product.productlink);
 
       cart.push({ product, quantity: item.quantity });
     });
@@ -115,9 +105,7 @@ function renderCart() {
   }
 
   // Totalpris varukorgen
-  let totalSumCart = drawer.querySelector(
-    ".cart-total",
-  ) as HTMLDivElement | null;
+  let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
   if (!totalSumCart) {
     totalSumCart = document.createElement("div");
     totalSumCart.className = "cart-total";
@@ -199,9 +187,7 @@ function renderCart() {
   totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
-  let checkoutBtn = drawer.querySelector(
-    ".checkout-btn",
-  ) as HTMLButtonElement | null;
+  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
 
   if (!checkoutBtn) {
     checkoutBtn = document.createElement("button");
@@ -228,9 +214,7 @@ function renderCart() {
 
 // rendera varukorgen på shop-sidan
 function checkoutCart() {
-  const basket = document.querySelector(
-    ".basket-display",
-  ) as HTMLDivElement | null;
+  const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
   const sumCart = document.querySelector(".sum") as HTMLElement | null;
 
   if (!basket || !sumCart) return;
@@ -303,11 +287,7 @@ function openDrawer() {
 
 //lägger till i varukorgen +ökar om det är fler av samma
 function addToCart(product: Product) {
-  const existing = cart.find(
-    (item) =>
-      item.product.title === product.title &&
-      item.product.weight === product.weight,
-  );
+  const existing = cart.find((item) => item.product.title === product.title && item.product.weight === product.weight);
 
   if (existing) {
     existing.quantity += 1;
@@ -319,182 +299,8 @@ function addToCart(product: Product) {
   cartLocalStorage();
 }
 
-//-------  products.html - start -------
+// ---- products.html ------
 //
-//Skapar alla de 12 produkterna
-const product1: Product = new Product(
-  "Kaffepetters",
-  "250g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "299kr",
-  "assets/images/hero2.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product2: Product = new Product(
-  "Kaffekonrads",
-  "250g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "199kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product3: Product = new Product(
-  "Koffebroderns",
-  "250g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "229kr",
-  "assets/images/hero4.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product4: Product = new Product(
-  "Kaffekonrads",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "399kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product5: Product = new Product(
-  "Karlssons",
-  "250g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "249kr",
-  "assets/images/hero3.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product6: Product = new Product(
-  "Kaffebönan",
-  "250g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "199kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product7: Product = new Product(
-  "Kaffepetters",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "589kr",
-  "assets/images/hero2.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product8: Product = new Product(
-  "Kaffebönan",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "399kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product9: Product = new Product(
-  "Koffebroderns",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "429kr",
-  "assets/images/hero4.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product10: Product = new Product(
-  "Kaffebönan",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "399kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product11: Product = new Product(
-  "Karlssons",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "499kr",
-  "assets/images/hero3.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-const product12: Product = new Product(
-  "Kaffebönan",
-  "500g",
-  "En len och fyllig smak som breder ut sig lugnt, med tydliga tonern av choklad och en behaglig rundhet i avslutet.",
-  "399kr",
-  "assets/images/hero1.png",
-  "assets/images/extra1.png",
-  "assets/images/extra2.png",
-  "assets/images/extra3.png",
-  "assets/icons/cart.svg",
-  "#",
-);
-
-//Listan med alla 12 produkter
-const allproducts: Product[] = [
-  product1,
-  product2,
-  product3,
-  product4,
-  product5,
-  product6,
-  product7,
-  product8,
-  product9,
-  product10,
-  product11,
-  product12,
-];
-
-//skapar en lista med 4 produkter utifrån allproducts
-//loopar igenom listan skapar html för produkterna i nya listan
-
-const popularProducts = allproducts.slice(0, 4);
-popularProducts.forEach((product) => {
-  const popularContainer = document.getElementById("products");
-
-  if (popularContainer) {
-    products(product, addToCart);
-  }
-});
-
 //Loopa genom listan allproducts, skapar HTML för varje produkt
 allproducts.forEach((product) => {
   const productsdiv = document.getElementById("allproducts");
@@ -504,7 +310,16 @@ allproducts.forEach((product) => {
   }
 });
 
-//-------  products.html - end -------
+// ---- index.html - hero section -----
+//
+//loopar igenom listan popularProducts, skapar HTML för varje produkt
+popularProducts.forEach((product) => {
+  const popularContainer = document.getElementById("products");
+
+  if (popularContainer) {
+    products(product, addToCart);
+  }
+});
 //
 //
 
@@ -554,8 +369,7 @@ buybtn?.addEventListener("click", async () => {
     modaldiv.className = "modaldiv";
     const confirmation = document.createElement("p");
     confirmation.className = "confirmation";
-    confirmation.innerHTML =
-      "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
+    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
     const indexlink = document.createElement("a");
     indexlink.href = "index.html";
     indexlink.className = "linkreset";
@@ -581,7 +395,6 @@ const form = document.getElementById("buyform") as HTMLFormElement;
 buybtn?.addEventListener("click", () => {
   form.reset();
   clearCart();
-  //Kanske lägga till här att varukorgslistan töms då varorna är köpta?
 });
 //------ shop.html - end -----
 
