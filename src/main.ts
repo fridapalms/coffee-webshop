@@ -1,17 +1,14 @@
 import { createHtml } from "./Utils/htmlUtils";
-import { Product } from "./models/Product";
 import "./scss/style.scss";
 import { cookiePopUp } from "./Utils/cooike";
 import { products } from "./Utils/hero";
 import { searchNotFound, showResult } from "./Utils/showResult";
 import { addToCart, clearCart } from "./Utils/cartActions";
 import { allproducts, popularProducts } from "./data/productData";
-import "./Utils/cartDOM"
+import "./Utils/cartDOM";
 
 //Cookie
 cookiePopUp();
-
-
 
 // ---- products.html ------
 //
@@ -37,8 +34,6 @@ popularProducts.forEach((product) => {
 //
 //
 
-
-
 //------ shop.html - start -----
 //
 //Lyssna efter klick på Bekräfta köp -> Öppna/stång orderbekräftelse popup
@@ -53,7 +48,8 @@ buybtn?.addEventListener("click", async () => {
     modaldiv.className = "modaldiv";
     const confirmation = document.createElement("p");
     confirmation.className = "confirmation";
-    confirmation.innerHTML = "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
+    confirmation.innerHTML =
+      "Vi har mottagit din order!<br />Orderbekräftelse skickas via mail.<br />Ordernummer: 0000";
     const indexlink = document.createElement("a");
     indexlink.href = "index.html";
     indexlink.className = "linkreset";
