@@ -2,7 +2,6 @@ import { cart, cartLocalStorage } from "./cartStorage";
 import { stackPrice } from "./stackPrice";
 import { clearCart, minusCart, plusCart } from "./cartActions";
 
-
 // uppdaterar innehållet i varukorgen
 export function renderCart() {
   const drawer = document.querySelector(".drawer") as HTMLElement | null;
@@ -18,9 +17,7 @@ export function renderCart() {
   }
 
   // Totalpris varukorgen
-  let totalSumCart = drawer.querySelector(
-    ".cart-total",
-  ) as HTMLDivElement | null;
+  let totalSumCart = drawer.querySelector(".cart-total") as HTMLDivElement | null;
   if (!totalSumCart) {
     totalSumCart = document.createElement("div");
     totalSumCart.className = "cart-total";
@@ -106,9 +103,7 @@ export function renderCart() {
   totalSumCart.textContent = `Totalpris: ${cartTotal} kr`;
 
   // gå till kassan knappen i varukorgen
-  let checkoutBtn = drawer.querySelector(
-    ".checkout-btn",
-  ) as HTMLButtonElement | null;
+  let checkoutBtn = drawer.querySelector(".checkout-btn") as HTMLButtonElement | null;
 
   if (!checkoutBtn) {
     checkoutBtn = document.createElement("button");
@@ -117,7 +112,7 @@ export function renderCart() {
 
     checkoutBtn.addEventListener("click", () => {
       cartLocalStorage();
-      window.location.href = "shop.html";
+      window.location.href = "/shop.html";
     });
     drawer.appendChild(checkoutBtn);
   }
@@ -135,9 +130,7 @@ export function renderCart() {
 
 // rendera varukorgen på shop-sidan
 export function checkoutCart() {
-  const basket = document.querySelector(
-    ".basket-display",
-  ) as HTMLDivElement | null;
+  const basket = document.querySelector(".basket-display") as HTMLDivElement | null;
   const sumCart = document.querySelector(".sum") as HTMLElement | null;
 
   if (!basket || !sumCart) return;
